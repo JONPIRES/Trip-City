@@ -42,7 +42,7 @@ def signup(req):
 
 # API functions \/\/\/
 
-def my_location(request, query):
+def my_location(request):
     query = request.GET.get('q')
     url = "https://travel-advisor.p.rapidapi.com/locations/v2/search"
     querystring = {"currency":"USD","units":"km","lang":"en_US"}
@@ -57,5 +57,6 @@ def my_location(request, query):
     }
     response = requests.request("POST", url, json=payload, headers=headers, params=querystring)
     data = json.loads(response.text)
+    print(response.text)
     context = {'locations': data['data']}
-    return render(request, 'my_template.html', context)
+    return render(request, 'api/search.html', context)
