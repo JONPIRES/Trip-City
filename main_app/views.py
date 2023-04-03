@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
 import os
+import json
 
 api_key = os.getenv('API_KEY')
 
@@ -20,6 +21,10 @@ print(f"this is my api_key: {api_key}")
 # Create your views here.
 def home(request):
   return render(request, 'home.html')
+
+def about(request):
+  return render(request, 'about.html')
+  
 
 def signup(req):
   error_message = ''
@@ -36,3 +41,21 @@ def signup(req):
   return render(req, 'registration/signup.html', context)
 
 # API functions \/\/\/
+
+def my_location(request, query):
+    query = request.GET.get('q')
+    url = "https://travel-advisor.p.rapidapi.com/locations/v2/search"
+    querystring = {"currency":"USD","units":"km","lang":"en_US"}
+    payload = {
+        "query": query,
+        "updateToken": ""
+    }
+    headers = {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": api_key,
+        "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com"
+    }
+    response = requests.request("POST", url, json=payload, headers=headers, params=querystring)
+    data = json.loads(response.text)
+    context = {'locations': data['data']}
+    return render(request, 'my_template.html', context)
