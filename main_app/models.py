@@ -7,4 +7,8 @@ from datetime import date
 
 class Destination(models.Model):
     name = models.CharField(max_length=50)
+
+class Activities(models.Model):
+    name = models.CharField(max_length=50)
+    city = models.ForeignKey(Destination,on_delete=models.CASCADE)
     
