@@ -8,22 +8,22 @@ api_key = os.getenv('API_KEY')
 
 # auto-complete (GET method)
 
-url = "https://travel-advisor.p.rapidapi.com/locations/v2/auto-complete"
+# url = "https://travel-advisor.p.rapidapi.com/locations/v2/auto-complete"
 
-querystring = {"query":"New York","lang":"en_US","units":"km"}
+# querystring = {"query":"New York","lang":"en_US","units":"km"}
 
-headers = {
-    "X-RapidAPI-Key": api_key,
-    "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com"
-}
+# headers = {
+#     "X-RapidAPI-Key": api_key,
+#     "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com"
+# }
 
-response = requests.request("GET", url, headers=headers, params=querystring)
+# response = requests.request("GET", url, headers=headers, params=querystring)
 
-object = response.json()
+# object = response.json()
 
-text = f" this is the object name: {object['data']['Typeahead_autocomplete']['results'][4]}"
+# text = f" this is the object name: {object['data']['Typeahead_autocomplete']['results'][4]}"
 
-print(response.text)
+# print(response.text)
 
 # Locations search POST
 
