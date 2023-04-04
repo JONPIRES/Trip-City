@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class Destination(models.Model):
     name = models.CharField(max_length=50)
     date = models.DateField('Trip Date',default=date.today)
-    duration = models.IntegerField(default=1)
+    days = models.IntegerField(default=1)
     user= models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Activities(models.Model):
