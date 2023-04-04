@@ -21,6 +21,9 @@
                     <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Trip City</a></li>
                 </ul>
                 <ul class="right">
+                    <li><a href="{% url 'plan_index' %}">Plans</a></li>
+                    <li><a href="{% url 'event_create' %}">Activities</a></li>
+                    <li><a href="{% url 'event_index' %}">Itineraries</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     
                 </ul>
@@ -32,7 +35,7 @@
         {% endblock %}
     </main>
   	<footer class="page-footer teal darken-4">
-       <div class="right">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
+       <div class="right teal-text text-darken-3">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
     </footer>
 </body>
 </html>
