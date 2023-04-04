@@ -29,7 +29,7 @@ def signup(req):
     if form.is_valid():
       user=form.save()
       login(req, user)
-      return redirect('index')
+      return redirect('home')
     else:
       error_message = 'invalid sign up - try again'
   form = UserCreationForm()
