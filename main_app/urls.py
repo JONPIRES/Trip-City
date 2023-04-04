@@ -5,8 +5,7 @@ urlpatterns = [
   path('', views.home, name='home'),
   path('about/', views.about, name='about'),
   path('accounts/signup/', views.signup, name='signup'),
-  path('my_location/', views.my_location, name='my_location'),
-  
+    
   # path('destination/', views.destination_index, name='index'),
   # path('destination/<int:destination_id>/', views.Destination_detail, name='detail'),
   # path('destination/create/', views.DestinationCreate.as_view(), name='destination_create'),
