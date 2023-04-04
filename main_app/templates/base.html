@@ -21,12 +21,9 @@
                     <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Trip City</a></li>
                 </ul>
                 <ul class="right">
-                    <!-- <li>Suggested Trips</li>
-                    <li>Start a Trip</li>
-                    <li>Activities</li>
-                    <li>Itineraries</li> -->
+                    
                     {% if user.is_authenticated %}    
-                    <li><a href="{% url 'home' %}">About</a></li>
+                    <li><a href="{% url 'dest_detail' %}">My Destinations</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
