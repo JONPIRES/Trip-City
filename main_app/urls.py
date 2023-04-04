@@ -5,11 +5,12 @@ urlpatterns = [
   path('', views.home, name='home'),
   path('about/', views.about, name='about'),
   path('accounts/signup/', views.signup, name='signup'),
+  path('destination/', views.dest_index, name='index'),
   path('destination/<int:dest_id>/', views.dest_detail, name='dest_detail'),
   path('destination/create/', views.DestCreate.as_view(), name='destination_create'),
+  path('destination/<int:dest_id>/add_act/', views.add_activity, name='add_activity'),
   
     
-  # path('destination/', views.destination_index, name='index'),
   # path('destination/<int:pk>/update/', views.DestinationUpdate.as_view(), name='destination_update'),
   # path('destination/<int:pk>/delete/', views.DestinationDelete.as_view(), name='destination_delete'),
   # path('destination/<int:destination_id>/add_accomodation/', views.add_accomodation, name='add_accomodation'),
