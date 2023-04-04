@@ -22,11 +22,18 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+def dest_index(request):
+  dest = Destination.objects.filter(user=request.user)
+  return render(request, 'destination/index.html', {
+    'dest': dest
+  })
 
 
 class DestCreate(LoginRequiredMixin,CreateView):
   model = Destination
   fields = '__all__'
+
+
 
   def form_valid(self,form):
     # form.instance: is the user object based on the user model we're enheriting
@@ -40,18 +47,14 @@ def dest_detail(request, dest_id):
       'dest': dest, 'act_form': act_form
   })
   
-# def add_activity(request, dest_id):
-#   form = ActivitiesForm(request.POST)
+def add_activity(request, dest_id):
+  form = ActivitiesForm(request.POST)
 
-#   if form.is_valid():
-#     # We want a model instance, but
-#     # we can't save to the db yet
-#     # because we have not assigned the
-#     # cat_id FK.
-#     new_act = form.save(commit=False)
-#     new_act.destination = dest_id
-#     new_act.save()
-#   return redirect('dest_detail', dest_id=dest_id)
+  if form.is_valid():
+    new_act = form.save(commit=False)
+    new_act.destination = dest_id
+    new_act.save()
+  return redirect('dest_detail', dest_id=dest_id)
   
 
 def signup(req):
