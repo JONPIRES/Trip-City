@@ -6,25 +6,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trip city</title>
+    <title>Trip City</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="icon" type="image/png" href="https://imgur.com/R2o4Uay"/>
 </head>
 <body>
     <header class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper teal darken-4">
                 <ul>
                     <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Trip City</a></li>
-                    <form method="GET" id="contact-tab" type="button" action="{% url 'my_location' %}" >
-                        <input type="text search-button" name="q">
-                        <button  type="submit"><i class="fa fa-search"></i> search </button>
-                    </form>
                 </ul>
                 <ul class="right">
+                    <li>Suggested Trips</li>
+                    <li>Start a Trip</li>
+                    <li>Activities</li>
+                    <li>Itineraries</li>
                     <li><a href="{% url 'about' %}">About</a></li>
 
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    
                 </ul>
             </div>
         </nav>
@@ -33,8 +38,8 @@
         {% block content %}
         {% endblock %}
     </main>
-  	<footer class="page-footer">
-       <div class="right">All Rights Reserved, &copy; 2023 Trip City &nbsp;</div>
+  	<footer class="page-footer teal darken-4">
+       <div class="right teal-text text-darken-3">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
     </footer>
 </body>
 </html>
