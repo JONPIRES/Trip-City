@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import *
+from .forms import ActivitiesForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 # \/\/this is for the functions so it requires you to be logged in
@@ -20,6 +21,19 @@ def home(request):
 
 def about(request):
   return render(request, 'about.html')
+
+
+
+class DestCreate(LoginRequiredMixin,CreateView):
+  model = Destination
+  fields = '__all__'
+
+  def form_valid(self,form):
+    # form.instance: is the user object based on the user model we're enheriting
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+  
+
   
 
 def signup(req):
