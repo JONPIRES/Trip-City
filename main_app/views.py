@@ -33,7 +33,25 @@ class DestCreate(LoginRequiredMixin,CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
   
+def dest_detail(request, dest_id):
+    dest = Destination.objects.get(id=dest_id)
+    act_form = ActivitiesForm()
+    return render(request, 'destinations/detail.html', {
+      'dest': dest, 'act_form': act_form
+  })
+  
+# def add_activity(request, dest_id):
+#   form = ActivitiesForm(request.POST)
 
+#   if form.is_valid():
+#     # We want a model instance, but
+#     # we can't save to the db yet
+#     # because we have not assigned the
+#     # cat_id FK.
+#     new_act = form.save(commit=False)
+#     new_act.destination = dest_id
+#     new_act.save()
+#   return redirect('dest_detail', dest_id=dest_id)
   
 
 def signup(req):
