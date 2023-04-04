@@ -4,4 +4,4 @@ from .models import Activities
 class ActivitiesForm(ModelForm):
   class Meta:
     model = Activities
-    fields = ['date', 'meal']
+    fields = ['name', 'duration', 'date']
