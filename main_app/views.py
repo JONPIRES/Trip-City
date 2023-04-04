@@ -56,6 +56,13 @@ def add_activity(request, dest_id):
     new_act.save()
   return redirect('dest_detail', dest_id=dest_id)
   
+class DestUpdate(UpdateView):
+  model = Destination
+  fields = '__all__'
+
+class DestDelete(DeleteView):
+  model = Destination
+  success_url = '/destination'
 
 def signup(req):
   error_message = ''

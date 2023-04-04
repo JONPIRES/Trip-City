@@ -8,6 +8,8 @@ urlpatterns = [
   path('destination/', views.dest_index, name='index'),
   path('destination/<int:dest_id>/', views.dest_detail, name='dest_detail'),
   path('destination/create/', views.DestCreate.as_view(), name='destination_create'),
+  path('destination/<int:pk>/update/', views.DestUpdate.as_view(), name='dest_update'),
+  path('destination/<int:pk>/delete/', views.DestDelete.as_view(), name='dest_delete'),
   path('destination/<int:dest_id>/add_act/', views.add_activity, name='add_activity'),
   
     
