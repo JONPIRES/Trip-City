@@ -15,5 +15,8 @@ class Destination(models.Model):
 class Activities(models.Model):
     name = models.CharField(max_length=50)
     city = models.ForeignKey(Destination,on_delete=models.CASCADE)
-    img = models.ImageField()
+    duration = models.IntegerField()
+    date = models.DateField('Activity date')
+
+
     
