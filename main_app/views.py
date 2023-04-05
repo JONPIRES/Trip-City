@@ -31,9 +31,7 @@ def dest_index(request):
 
 class DestCreate(LoginRequiredMixin,CreateView):
   model = Destination
-  fields = '__all__'
-
-
+  fields = ['name', 'date', 'days']
 
   def form_valid(self,form):
     # form.instance: is the user object based on the user model we're enheriting
@@ -58,7 +56,7 @@ def add_activity(request, dest_id):
   
 class DestUpdate(UpdateView):
   model = Destination
-  fields = '__all__'
+  fields = ['name', 'date', 'days']
 
 class DestDelete(DeleteView):
   model = Destination
