@@ -11,7 +11,10 @@ urlpatterns = [
   path('destination/<int:pk>/delete/', views.DestDelete.as_view(), name='dest_delete'),
   path('destination/<int:dest_id>/add_act/', views.add_activity, name='add_activity'),
   path('accounts/signup/', views.signup, name='signup'),
-  
+  # Activities paths\/\/
+  path('activities/<int:dest_id>/create/', views.add_activity, name='act_create'),
+  path('activities/<int:pk>/delete/', views.ActDelete.as_view(), name='act_delete'),
+
     
   # path('destinations/<int:pk>/update/', views.DestinationsUpdate.as_view(), name='destinations_update'),
   # path('destinations/<int:pk>/delete/', views.DestinationsDelete.as_view(), name='destinations_delete'),
@@ -21,8 +24,6 @@ urlpatterns = [
   # path('destinations/<int:destinations_id>/unassoc_activities/<int:activities_id>/', views.unassoc_activities, name='unassoc_activities'),
   # path('activities/', views.ActivitiesList.as_view(), name='activities_index'),
   # path('activities/<int:pk>/', views.ActivitiesDetail.as_view(), name='activities_detail'),
-  # path('activities/create/', views.ActivitiesCreate.as_view(), name='activities_create'),
   # path('activities/<int:pk>/update/', views.ActivitiesUpdate.as_view(), name='activities_update'),
-  # path('activities/<int:pk>/delete/', views.ActivitiesDelete.as_view(), name='activities_delete'),
   
 ]

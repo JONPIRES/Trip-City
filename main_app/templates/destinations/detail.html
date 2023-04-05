@@ -22,7 +22,25 @@
         </form>
        </div>
     </div>
-    
+    <table>
+      <thead>Activity</thead>
+      <tbody>
+        {% for act in dest.activities_set.all %}
+          <tr>
+            <td>{{act.name}}</td>
+            <td>{{act.date}}</td>
+            <td>{{act.duration}}</td>
+            <td>{{act.notes}}</td>
+            <td> <form action="{% url 'act_delete' act.id  %}" method="POST">{% csrf_token %} <button type="submit" class="btn">Remove</button></form></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <form action="{% url 'act_create' dest.id %}" method="POST">
+      {% csrf_token %} {{ act_form.as_p }}
+      <input type="submit" class="btn" value="Add Activity">
+    </form>
 
 
 <script>
