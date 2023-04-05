@@ -4,7 +4,8 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: bisque;
+    background-color: coral;
+    font-family: "Bebas Neue";
   }
   
   main {
@@ -14,4 +15,8 @@ body {
   footer.page-footer {
     padding-top: 0;
     text-align: right;
+  }
+
+  h1 {
+    font-family: "Bebas Neue";
   }
