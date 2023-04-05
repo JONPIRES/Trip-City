@@ -32,6 +32,7 @@
             <td>{{act.duration}}</td>
             <td>{{act.notes}}</td>
             <td> <form action="{% url 'act_delete' act.id  %}" method="POST">{% csrf_token %} <button type="submit" class="btn">Remove</button></form></td>
+            <td><a href="{% url 'act_update' act.id %}"> Update</a></td>
           </tr>
         {% endfor %}
       </tbody>

@@ -23,6 +23,9 @@ class Activities(models.Model):
     date = models.DateField('Activity date',default=date.today)
     notes = models.TextField(max_length=250,default="No notes")
 
+    def get_absolute_url(self):
+        return reverse('index')
+
 
 class Posts(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
