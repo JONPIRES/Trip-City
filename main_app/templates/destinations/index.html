@@ -4,8 +4,8 @@
 <h1 style="font-family:cursive">Trips</h1>
 <h5>and details</h5>
 
-<!-- {% for dest in destinations %} --> -->
-  <!-- <a href="{% url 'dest_detail' %}"> -->
+{% for dest in destinations %} 
+  <a href="{% url 'dest_detail' %}">
     <div class="card z-depth-1 hoverable">
       <div class="card-content teal lighten-2">
         <span class="card-title white-text">{{ Destination.name }}</span>
@@ -16,6 +16,6 @@
     </div>
   </a>
   <h3>Go back</h3>
-<!-- {% endfor %} -->
+{% endfor %}
 <h3>here</h3>
 {% endblock %}
