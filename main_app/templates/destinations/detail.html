@@ -16,7 +16,10 @@
       </div>
        <div class="card-action">
          <a href="{% url 'dest_update' dest.id %}">Edit Trip Details</a>
-         <a href="{% url 'dest_delete' dest.id %}">Cancel</a>
+         <form action="{% url 'dest_delete' dest.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn">Cancel</button>
+        </form>
        </div>
     </div>
     

@@ -22,12 +22,14 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def dest_index(request):
   dest = Destination.objects.filter(user=request.user)
   return render(request, 'destinations/index.html', {
     'dest': dest
   })
 
+# Destinations Functions\/\/\/
 
 class DestCreate(LoginRequiredMixin,CreateView):
   model = Destination
@@ -37,7 +39,8 @@ class DestCreate(LoginRequiredMixin,CreateView):
     # form.instance: is the user object based on the user model we're enheriting
     form.instance.user = self.request.user
     return super().form_valid(form)
-  
+
+@login_required  
 def dest_detail(request, dest_id):
     dest = Destination.objects.get(id=dest_id)
     act_form = ActivitiesForm()
@@ -45,6 +48,17 @@ def dest_detail(request, dest_id):
       'dest': dest, 'act_form': act_form
   })
   
+class DestUpdate(LoginRequiredMixin,UpdateView):
+  model = Destination
+  fields = ['name', 'date', 'days']
+
+class DestDelete(LoginRequiredMixin,DeleteView):
+  model = Destination
+  success_url = '/destination'
+
+# Activities Form\/\/\/
+
+@login_required
 def add_activity(request, dest_id):
   form = ActivitiesForm(request.POST)
 
@@ -54,13 +68,8 @@ def add_activity(request, dest_id):
     new_act.save()
   return redirect('dest_detail', dest_id=dest_id)
   
-class DestUpdate(UpdateView):
-  model = Destination
-  fields = ['name', 'date', 'days']
 
-class DestDelete(DeleteView):
-  model = Destination
-  success_url = '/destination'
+  # User Functions \/\/
 
 def signup(req):
   error_message = ''
