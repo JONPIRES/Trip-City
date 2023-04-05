@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: rgb(246, 158, 126);
+    font-family: "Bebas Neue";
+  }
+  
+  main {
+    flex: 1 0 auto;
+  }
+  
+  footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+  }
+
+  h1 {
+    font-family: "Bebas Neue";
+  }
+
+  /* .container {
+    background: radial-gradient(50% 25% at center, rgb(240, 203, 190), rgb(244, 175, 150), rgb(246, 158, 126));
+} */
