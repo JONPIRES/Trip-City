@@ -16,7 +16,7 @@
 <body>
     <header class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper teal darken-4">
+            <div class="nav-wrapper blue accent-2">
                 <ul>
                     <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Trip City</a></li>
                 </ul>
@@ -24,6 +24,7 @@
                     
                     {% if user.is_authenticated %}    
                     
+                    <li><a href="{% url 'destination_create' %}">Add Destination</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
@@ -39,8 +40,8 @@
         {% block content %}
         {% endblock %}
     </main>
-  	<footer class="page-footer teal darken-4">
-       <div class="right teal-text text-darken-3">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
+  	<footer class="page-footer blue accent-2">
+       <div class="right blue-text text-accent-4">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
     </footer>
 </body>
 </html>
