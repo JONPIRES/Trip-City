@@ -14,6 +14,7 @@ urlpatterns = [
   # Activities paths\/\/
   path('activities/<int:dest_id>/create/', views.add_activity, name='act_create'),
   path('activities/<int:pk>/delete/', views.ActDelete.as_view(), name='act_delete'),
+  path('activities/<int:pk>/update/', views.ActUpdate.as_view(), name='act_update'),
 
     
   # path('destinations/<int:pk>/update/', views.DestinationsUpdate.as_view(), name='destinations_update'),
@@ -24,6 +25,5 @@ urlpatterns = [
   # path('destinations/<int:destinations_id>/unassoc_activities/<int:activities_id>/', views.unassoc_activities, name='unassoc_activities'),
   # path('activities/', views.ActivitiesList.as_view(), name='activities_index'),
   # path('activities/<int:pk>/', views.ActivitiesDetail.as_view(), name='activities_detail'),
-  # path('activities/<int:pk>/update/', views.ActivitiesUpdate.as_view(), name='activities_update'),
   
 ]
