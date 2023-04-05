@@ -12,6 +12,9 @@ class Destination(models.Model):
     days = models.IntegerField(default=1)
     user= models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return reverse('home')
+
 class Activities(models.Model):
     name = models.CharField(max_length=50)
     destination = models.ForeignKey(Destination,on_delete=models.CASCADE)
