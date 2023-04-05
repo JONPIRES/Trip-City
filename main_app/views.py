@@ -64,10 +64,17 @@ def add_activity(request, dest_id):
 
   if form.is_valid():
     new_act = form.save(commit=False)
-    new_act.destination = dest_id
+    new_act.destination_id = dest_id
     new_act.save()
-  return redirect('dest_detail', dest_id=dest_id)
-  
+    return redirect('dest_detail', dest_id=dest_id)
+
+class ActUpdate(UpdateView):
+    model=Activities
+    fields=['name','duration', 'date', 'notes']
+
+class ActDelete(DeleteView):
+    model=Activities
+    success_url='/destination'
 
   # User Functions \/\/
 
