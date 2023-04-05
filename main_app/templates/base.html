@@ -9,9 +9,9 @@
     <title>Trip City</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/png" href="https://imgur.com/R2o4Uay"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <link rel="icon" type="image/png" href="https://imgur.com/R2o4Uay"/>
 </head>
 <body>
     <header class="navbar-fixed">
@@ -22,10 +22,11 @@
                 </ul>
                 <ul class="right">
                     
+                    <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}    
                     
                     <li><a href="{% url 'destination_create' %}">Add Destination</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'index' %}">View Trips</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
                     <li><a href="{% url 'signup' %}">Sign Up</a></li>

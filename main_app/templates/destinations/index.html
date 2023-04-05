@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 style="font-family:cursive">Trips</h1>
+<h5>and details</h5>
+
+<!-- {% for dest in destinations %} --> -->
+  <!-- <a href="{% url 'dest_detail' %}"> -->
+    <div class="card z-depth-1 hoverable">
+      <div class="card-content teal lighten-2">
+        <span class="card-title white-text">{{ Destination.name }}</span>
+        <p class="white-text">Date: {{ destination.date }}</p>
+        <p class="white-text">Days: {{ destination.duration }}</p>
+        <p class="white-text">User: {{ user.name }}</p>
+        </div>
+    </div>
+  </a>
+  <h3>Go back</h3>
+<!-- {% endfor %} -->
+<h3>here</h3>
+{% endblock %}

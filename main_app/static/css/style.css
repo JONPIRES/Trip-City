@@ -4,7 +4,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: coral;
+    background-color: rgb(246, 158, 126);
     font-family: "Bebas Neue";
   }
   
@@ -20,3 +20,7 @@ body {
   h1 {
     font-family: "Bebas Neue";
   }
+
+  /* .container {
+    background: radial-gradient(50% 25% at center, rgb(240, 203, 190), rgb(244, 175, 150), rgb(246, 158, 126));
+} */
