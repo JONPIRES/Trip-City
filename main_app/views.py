@@ -24,7 +24,7 @@ def about(request):
 
 def dest_index(request):
   dest = Destination.objects.filter(user=request.user)
-  return render(request, 'destination/index.html', {
+  return render(request, 'destinations/index.html', {
     'dest': dest
   })
 
