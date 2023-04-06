@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Megrim&display=swap');
 
 body {
-    display: flex;
+    display:flex;
     min-height: 100vh;
     flex-direction: column;
     /* background-color: rgb(246, 158, 126); */
