@@ -84,6 +84,12 @@ def post_index(request):
     'post': post
   })
 
+@login_required  
+def post_detail(request, post_id):
+    post = Posts.objects.get(id=post_id)
+    return render(request, 'post/detail.html', {
+      'post': post
+  })
 
 class PostCreate(LoginRequiredMixin,CreateView):
     model = Posts
@@ -114,11 +120,12 @@ def add_photo(req,post_id):
       bucket = os.getenv('S3_BUCKET')
       s3.upload_fileobj(photo_file, bucket, key)
       url = f"{os.getenv('S3_BUCKET')}{bucket}/{key}"
-      Photo.objects.create(url=url, post_id=post_id)
+      comment = req.POST.get('comment', '')
+      Photo.objects.create(url=url, post_id=post_id, comment=comment)
     except Exception as e:
       print('an error occured uploading file to s3')
       print(e)
-  return redirect('detail', post_id=post_id)
+  return redirect('post_detail', post_id=post_id)
 
 
 
