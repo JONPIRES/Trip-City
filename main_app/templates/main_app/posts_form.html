@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if object %}
+<h1 class="center">Edit Post<span class="white-text"> "{{ destination.name }}"</span></h1>
+{% else %}
+<h1 class="center">Create Post &#9992;</h1>
+{% endif %}
+
+<!-- Leaving the action empty makes the form post to the same url used to display it -->
+<form action="" method="POST">
+  <!-- Django requires the following for security purposes -->
+  {% csrf_token %}
+  <table>
+    <!-- Render the inputs inside of <tr>s & <td>s -->
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Submit" class="btn blue accent-2" style="font-family: Bebas Neue">
+</form>
+
+<script>
+      const selectEl = document.getElementById('id_rating');
+  M.FormSelect.init(selectEl);
+</script>
+</script>
+{% endblock %}

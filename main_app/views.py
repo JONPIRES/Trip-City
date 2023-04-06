@@ -78,22 +78,47 @@ class ActDelete(DeleteView):
 
     # Post Functions
 
-    class PostCreate(LoginRequiredMixin,CreateView):
-      model = Posts
-      fields = ['description','rating', 'comment']
+def post_index(request):
+  post = Posts.objects.all()
+  return render(request, 'post/index.html', {
+    'post': post
+  })
 
-      def form_valid(self,form):
-        # form.instance: is the user object based on the user model we're enheriting
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+
+class PostCreate(LoginRequiredMixin,CreateView):
+    model = Posts
+    fields = ['description','rating', 'comment']
+
+    def form_valid(self,form):
+      # form.instance: is the user object based on the user model we're enheriting
+      form.instance.user = self.request.user
+      return super().form_valid(form)
       
-    class ActUpdate(UpdateView):
-      model=Activities
-      fields=['name','duration', 'date', 'notes']
+class PostUpdate(UpdateView):
+    model=Activities
+    fields=['description','comment', 'rating']
 
-    class ActDelete(DeleteView):
-      model=Activities
-      success_url='/destination'
+class PostDelete(DeleteView):
+    model=Activities
+    success_url='/posts'
+
+# Posts Photos \/\/
+
+def add_photo(req,post_id):
+  photo_file = req.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    #uuid generates a hex of 32 charactrers but we drop that to 6 characters with the [:6]  / the rfind wants to find the '.' in the name and the basically get the '. and the rest whick would be the file type (.jpg)
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      bucket = os.getenv('S3_BUCKET')
+      s3.upload_fileobj(photo_file, bucket, key)
+      url = f"{os.getenv('S3_BUCKET')}{bucket}/{key}"
+      Photo.objects.create(url=url, post_id=post_id)
+    except Exception as e:
+      print('an error occured uploading file to s3')
+      print(e)
+  return redirect('detail', post_id=post_id)
 
 
 
