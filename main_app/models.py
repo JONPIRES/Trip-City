@@ -38,4 +38,9 @@ class Posts(models.Model):
         default=RATING[0][0])
 
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=250)
+
 

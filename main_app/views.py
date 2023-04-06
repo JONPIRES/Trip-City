@@ -78,22 +78,41 @@ class ActDelete(DeleteView):
 
     # Post Functions
 
-    class PostCreate(LoginRequiredMixin,CreateView):
-      model = Posts
-      fields = ['description','rating', 'comment']
+class PostCreate(LoginRequiredMixin,CreateView):
+    model = Posts
+    fields = ['description','rating', 'comment']
 
-      def form_valid(self,form):
-        # form.instance: is the user object based on the user model we're enheriting
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+    def form_valid(self,form):
+      # form.instance: is the user object based on the user model we're enheriting
+      form.instance.user = self.request.user
+      return super().form_valid(form)
       
-    class ActUpdate(UpdateView):
-      model=Activities
-      fields=['name','duration', 'date', 'notes']
+class ActUpdate(UpdateView):
+    model=Activities
+    fields=['name','duration', 'date', 'notes']
 
-    class ActDelete(DeleteView):
-      model=Activities
-      success_url='/destination'
+class ActDelete(DeleteView):
+    model=Activities
+    success_url='/destination'
+
+# Posts Photos \/\/
+
+
+def add_photo(req,cat_id):
+  photo_file = req.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    #uuid generates a hex of 32 charactrers but we drop that to 6 characters with the [:6]  / the rfind wants to find the '.' in the name and the basically get the '. and the rest whick would be the file type (.jpg)
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      bucket = os.environ['S3_BUCKET']
+      s3.upload_fileobj(photo_file, bucket, key)
+      url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+      Photo.objects.create(url=url, cat_id=cat_id)
+    except Exception as e:
+      print('an error occured uploading file to s3')
+      print(e)
+  return redirect('detail', cat_id=cat_id)
 
 
 
