@@ -33,7 +33,7 @@ def dest_index(request):
 
 class DestCreate(LoginRequiredMixin,CreateView):
   model = Destination
-  fields = ['name', 'date', 'days']
+  fields = ['name', 'date', 'days', 'notes']
 
   def form_valid(self,form):
     # form.instance: is the user object based on the user model we're enheriting
