@@ -76,6 +76,27 @@ class ActDelete(DeleteView):
     model=Activities
     success_url='/destination'
 
+    # Post Functions
+
+    class PostCreate(LoginRequiredMixin,CreateView):
+      model = Posts
+      fields = ['description','rating', 'comment']
+
+      def form_valid(self,form):
+        # form.instance: is the user object based on the user model we're enheriting
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+      
+    class ActUpdate(UpdateView):
+      model=Activities
+      fields=['name','duration', 'date', 'notes']
+
+    class ActDelete(DeleteView):
+      model=Activities
+      success_url='/destination'
+
+
+
   # User Functions \/\/
 
 def signup(req):
