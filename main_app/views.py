@@ -78,6 +78,13 @@ class ActDelete(DeleteView):
 
     # Post Functions
 
+def post_index(request):
+  post = Posts.objects.all()
+  return render(request, 'post/index.html', {
+    'post': post
+  })
+
+
 class PostCreate(LoginRequiredMixin,CreateView):
     model = Posts
     fields = ['description','rating', 'comment']
@@ -87,13 +94,13 @@ class PostCreate(LoginRequiredMixin,CreateView):
       form.instance.user = self.request.user
       return super().form_valid(form)
       
-class ActUpdate(UpdateView):
+class PostUpdate(UpdateView):
     model=Activities
-    fields=['name','duration', 'date', 'notes']
+    fields=['description','comment', 'rating']
 
-class ActDelete(DeleteView):
+class PostDelete(DeleteView):
     model=Activities
-    success_url='/destination'
+    success_url='/posts'
 
 # Posts Photos \/\/
 
