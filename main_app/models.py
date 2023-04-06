@@ -26,11 +26,16 @@ class Activities(models.Model):
     def get_absolute_url(self):
         return reverse('index')
 
-
+RATING= (('1', '*'),('2','* *' ),('3', '* * *'),('4', '* * * *'),('5', '* * * * *'))
 class Posts(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     date = date.today
+    description=models.CharField(max_length=50)
     comment = models.TextField(max_length=250)
+    rating = models.CharField(
+        max_length=1,
+        choices = RATING,
+        default=RATING[0][0])
 
 
 
