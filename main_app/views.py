@@ -13,11 +13,10 @@ import uuid
 import boto3
 import os
 
-
-
 # Create your views here.
 def home(request):
-  return render(request, 'home.html')
+  act = Photo.objects.all
+  return render(request, 'home.html', {'act':act})
 
 def about(request):
   return render(request, 'about.html')
@@ -68,22 +67,32 @@ def add_activity(request, dest_id):
     new_act.save()
     return redirect('dest_detail', dest_id=dest_id)
 
-class ActUpdate(UpdateView):
+class ActUpdate(LoginRequiredMixin,UpdateView):
     model=Activities
     fields=['name','duration', 'date', 'notes']
 
-class ActDelete(DeleteView):
+class ActDelete(LoginRequiredMixin,DeleteView):
     model=Activities
     success_url='/destination'
 
     # Post Functions
 
+
 def post_index(request):
   post = Posts.objects.all()
+  
+  # print(f"this is the user id {user_id}")
   return render(request, 'post/index.html', {
     'post': post
   })
 
+@login_required
+def post_detail(request, post_id):
+    post = Posts.objects.get(id=post_id)
+    user_id=request.user.id
+    return render(request, 'post/detail.html', {
+      'post': post,"user":user_id
+  })
 
 class PostCreate(LoginRequiredMixin,CreateView):
     model = Posts
@@ -94,16 +103,17 @@ class PostCreate(LoginRequiredMixin,CreateView):
       form.instance.user = self.request.user
       return super().form_valid(form)
       
-class PostUpdate(UpdateView):
-    model=Activities
+class PostUpdate(LoginRequiredMixin,UpdateView):
+    model=Posts
     fields=['description','comment', 'rating']
 
-class PostDelete(DeleteView):
-    model=Activities
+class PostDelete(LoginRequiredMixin,DeleteView):
+    model=Posts
     success_url='/posts'
 
 # Posts Photos \/\/
 
+@login_required
 def add_photo(req,post_id):
   photo_file = req.FILES.get('photo-file', None)
   if photo_file:
@@ -113,14 +123,22 @@ def add_photo(req,post_id):
     try:
       bucket = os.getenv('S3_BUCKET')
       s3.upload_fileobj(photo_file, bucket, key)
-      url = f"{os.getenv('S3_BUCKET')}{bucket}/{key}"
-      Photo.objects.create(url=url, post_id=post_id)
+      url = f"{os.getenv('S3_BASE_URL')}{bucket}/{key}"
+      comment = req.POST.get('comment', '')
+      title = req.POST.get('title', '')
+      Photo.objects.create(url=url, post_id=post_id, comment=comment, title=title)
     except Exception as e:
       print('an error occured uploading file to s3')
       print(e)
-  return redirect('detail', post_id=post_id)
+  return redirect('post_detail', post_id=post_id)
 
+class PostActUpdate(LoginRequiredMixin,UpdateView):
+    model=Photo
+    fields=['title','comment']
 
+class PostActDelete(LoginRequiredMixin,DeleteView):
+    model=Photo
+    success_url='/posts'
 
   # User Functions \/\/
 

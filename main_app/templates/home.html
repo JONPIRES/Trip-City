@@ -1,5 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<!-- <h1 class="center-align blue-text text-darken-4" id="logo">Trip City</h1>
+
+<div class="row">
+    <div class="col s4">
+        {% for act in act %}
+        <a href=" {% url 'post_detail' act.post.id %} ">
+            <div class="card">
+                <div class="card-content">
+                    <img src="{{act.url}}" alt="" class="responsive-img card-panel"><br>
+                    <p>{{ act.title }}</p>
+                    <p>{{ act.comment }}</p> 
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+======= -->
+
+
+<!-- THE CODE SNIPET BELOW IS THE TEST FOR GENERATING THE CAROUSEL ITEMS BASED ON THE IMGS FROM THE POSTS  -->
+
+<!-- {% for act in act %}
+<a href=" {% url 'post_detail' act.post.id %} ">
+<div class="col-md-4">
+<div class="card">
+  <img src="{{act.url}}" alt="" class="card-img-top h-100""><br>
+  <div class="card-body">
+    <h5 class="card-title">{{ act.title }}</h5>
+    <p class="card-text">{{ act.comment }}</p>
+  </div>
+</div> 
+</div>
+{% endfor %} -->
+
+
+
+
+
 <div id="carouselExample" class="carousel slide carousel-custom">
     <div class="carousel-inner">
       <div class="carousel-item active">
