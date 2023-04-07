@@ -3,20 +3,22 @@
 
 <h1 class="center">Trips</h1>
 
-{% for post in post %} 
 <div class="row">
-  <div class="s4">
+{% for post in post %} 
+<div class="card">
+  <div class="col s3">
     <a href="{% url 'post_detail' post.id %}">
       <div class="card z-depth-1 hoverable">
         <div class="card-content blue accent-2">
-          <span class="card-title white-text center">{{ post.user.username }}</span>
+          <span class="card-title white-text center">{{ post.description }}</span>
+          <p class="white-text">{{ post.user.username }}</p>
           <p class="white-text">{{ post.date }}</p>
-          <p class="white-text">{{ post.desciption }}</p>
         </div>
       </div>
     </a>
   </div>
 </div>
-{% endfor %}
+  {% endfor %}
+</div>
 
 {% endblock %}

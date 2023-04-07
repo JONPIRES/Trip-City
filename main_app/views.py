@@ -101,11 +101,11 @@ class PostCreate(LoginRequiredMixin,CreateView):
       return super().form_valid(form)
       
 class PostUpdate(UpdateView):
-    model=Activities
+    model=Posts
     fields=['description','comment', 'rating']
 
 class PostDelete(DeleteView):
-    model=Activities
+    model=Posts
     success_url='/posts'
 
 # Posts Photos \/\/
@@ -121,13 +121,20 @@ def add_photo(req,post_id):
       s3.upload_fileobj(photo_file, bucket, key)
       url = f"{os.getenv('S3_BASE_URL')}{bucket}/{key}"
       comment = req.POST.get('comment', '')
-      Photo.objects.create(url=url, post_id=post_id, comment=comment)
+      title = req.POST.get('title', '')
+      Photo.objects.create(url=url, post_id=post_id, comment=comment, title=title)
     except Exception as e:
       print('an error occured uploading file to s3')
       print(e)
   return redirect('post_detail', post_id=post_id)
 
+class PostActUpdate(UpdateView):
+    model=Photo
+    fields=['title','comment']
 
+class PostActDelete(DeleteView):
+    model=Photo
+    success_url='/posts'
 
   # User Functions \/\/
 

@@ -27,6 +27,8 @@ class Activities(models.Model):
         return reverse('index')
 
 RATING= (('1', '*'),('2','* *' ),('3', '* * *'),('4', '* * * *'),('5', '* * * * *'))
+
+
 class Posts(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     date = date.today
@@ -44,9 +46,10 @@ class Posts(models.Model):
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30, default='',blank=True)
     comment = models.TextField(max_length=250, default="No comment")
 
-    # def get_absolute_url(self):
-    #     return reverse('home')
+    def get_absolute_url(self):
+        return reverse('post_index')
 
 

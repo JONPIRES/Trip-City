@@ -3,51 +3,84 @@
 
 
 <h1 class="center">{{ post.name }} - {{post.user.username}} &#8862;</h1>
-
+<div class="card-action">
+  <button style="margin: 10px;" type="submit" class="btn blue darken-4 center"><a href="{% url 'post_update' post.id %}">Edit Post</a>
+  <form action="{% url 'post_delete' post.id %}" method="POST"></button>
+    {% csrf_token %}
+    <button type="submit" class="btn red center" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
+  </form>
+</div>
+<div class="row">
+  <!-- Form for the activities -->
+<div id="show" style="cursor:pointer; font-size: 22px;">Add Activity &#x27B3;</div>
+  <div class="col s4 post-form" style="display: none;" >
+  <div class="card">
+    <div class="card-content">
+      <form 
+      action="{% url 'add_photo' post.id %}" 
+      enctype="multipart/form-data" 
+      method="POST" class="card-panel">
+      {% csrf_token %}
+      <input type="file" name="photo-file"><br>
+      <h6>Title</h6>
+      <input type="txt" name="title"><br>
+      <h6>Comment</h6>
+      <textarea name="comment" id="comment" rows="10" cols="15"></textarea><br>
+      <button type="submit" class="btn">Upload Photo</button>
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
 <div class="row">
   <div class="col s6">
-    <div class="card">
-        <div class="card-content">
-          <p>{{ post.date }}</p>
-          <p>Description: {{ post.description }}</p> 
+    <div class="row">
+      <div class="col s4">
+        <div class="card">
+            <div class="card-content">
+              <p>{{ post.description }}</p> 
+              <p>{{ post.date }}</p><br>
+              <p> {{post.comment}} </p>
+            </div>
+         </div>
+      </div>
+    </div>
+         <!-- \/\/\/  Below is the function for the photos  \/\/\/ -->
+    
+         <div class="row">
+             {% for act in post.photo_set.all %}
+              <div class="col s4">
+                <div class="card">
+                    <div class="card-content">
+                      <img src="{{act.url}}" alt="" class="responsive-img card-panel"><br>
+                      <p> {{act.title}} </p><br>
+                      <p> {{act.comment}} </p>
+                    </div>
+                    <div class="card-action">
+                      <button style="margin: 10px;" type="submit" class="btn blue darken-4 center"><a href="{% url 'post_act_update' act.id %}">Edit Post</a>
+                      <form action="{% url 'post_act_delete' act.id %}" method="POST"></button>
+                        {% csrf_token %}
+                        <button type="submit" class="btn red center" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
+                      </form>
+                    </div>
+                    
+                 </div>
+              </div>
+              {% empty %}
+              {% endfor %}
         </div>
-        <div class="card-action">
-          <button type="submit" class="btn blue darken-4 center"><a href="{% url 'post_update' post.id %}">Edit Post</a>
-          <form action="{% url 'post_delete' post.id %}" method="POST"></button>
-            {% csrf_token %}
-            <button type="submit" class="btn blue darken-4 center" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
-          </form>
-        </div>
-     </div>
-
-     <!-- \/\/\/  Below is the function for the photos  \/\/\/ -->
-
-     <div class="row">
-         {% for photo in post.photo_set.all %}
-          <div class="col s6">
-            <div class="card">
-                <div class="card-content">
-                  <img src="{{photo.url}}" alt="" class="responsive-img card-panel">
-                  <p> {{photo.comment}} </p>
-                </div>
-             </div>
-          </div>
-          
-          {% empty %}
-          {% endfor %}
-        </div>
-
-    <form 
-    action="{% url 'add_photo' post.id %}" 
-    enctype="multipart/form-data" 
-    method="POST" class="card-panel">
-    {% csrf_token %}
-    <input type="file" name="photo-file"><br>
-    <h6>Comment:</h6>
-    <textarea name="comment" id="comment" rows="4" cols="20"></textarea><br>
-    <button type="submit" class="btn">Upload Photo</button>
-    </form>
+  </div>
+</div>
 
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $('#show').click(function() {
+        $('.post-form').toggle("slide");
+      });
+  });
+  </script>
 
   {% endblock %}
