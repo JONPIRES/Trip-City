@@ -5,17 +5,6 @@
   font-family: "Bebas Neue";
 }
 
-nav {
-  color: red;
-  background-color: burlywood;
-  font-family: "Bebas Neue";
-  height: 4em;
-  align-items: center;
-  background-image: url("https://images.unsplash.com/photo-1533818616543-a5dc3945c5ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTU4fHxza3lsaW5lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60");
-  background-size: 100%;
-  background-position-y: 39%;
-  
-}
 
 
 #logo {
@@ -27,12 +16,20 @@ nav {
  /* font-style: italic; */
  font-weight:900
 }
+.navbar .nav-link {
+  color: #0023FF;
+}
 
-.nav-item {
+.custom-search-btn {
+  background-color: red;
+  color: #61C0BF;
+}
+
+/* .nav-item {
   font-size: 1.5em;
   color:rgb(255, 149, 20);
   margin-top: -2em;
-}
+} */
 
 a {
   color: red;
