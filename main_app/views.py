@@ -119,7 +119,7 @@ def add_photo(req,post_id):
     try:
       bucket = os.getenv('S3_BUCKET')
       s3.upload_fileobj(photo_file, bucket, key)
-      url = f"{os.getenv('S3_BUCKET')}{bucket}/{key}"
+      url = f"{os.getenv('S3_BASE_URL')}{bucket}/{key}"
       comment = req.POST.get('comment', '')
       Photo.objects.create(url=url, post_id=post_id, comment=comment)
     except Exception as e:

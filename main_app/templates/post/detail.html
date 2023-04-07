@@ -22,10 +22,20 @@
 
      <!-- \/\/\/  Below is the function for the photos  \/\/\/ -->
 
+     <div class="row">
          {% for photo in post.photo_set.all %}
-    <img src="{{photo.url}}" alt="" class="responsive-img card-panel">
-    {% empty %}
-    {% endfor %}
+          <div class="col s6">
+            <div class="card">
+                <div class="card-content">
+                  <img src="{{photo.url}}" alt="" class="responsive-img card-panel">
+                  <p> {{photo.comment}} </p>
+                </div>
+             </div>
+          </div>
+          
+          {% empty %}
+          {% endfor %}
+        </div>
 
     <form 
     action="{% url 'add_photo' post.id %}" 

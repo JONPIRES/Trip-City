@@ -44,9 +44,9 @@ class Posts(models.Model):
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     post = models.ForeignKey(Posts, on_delete=models.CASCADE)
-    comment = models.TextField(max_length=250)
+    comment = models.TextField(max_length=250, default="No comment")
 
-    def get_absolute_url(self):
-        return reverse('home')
+    # def get_absolute_url(self):
+    #     return reverse('home')
 
 

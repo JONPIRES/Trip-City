@@ -21,7 +21,7 @@ urlpatterns = [
   path('posts/<int:pk>/update/', views.PostUpdate.as_view(), name='post_update'),
   path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
   # Photos
-  path('cats/<int:post_id>/add_photo', views.add_photo, name='add_photo'),
+  path('photos/<int:post_id>/add_photo', views.add_photo, name='add_photo'),
 
   # Users
   path('accounts/signup/', views.signup, name='signup'),
