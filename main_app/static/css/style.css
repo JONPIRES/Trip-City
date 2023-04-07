@@ -35,13 +35,10 @@ script {
   color:#0023FF
 }
 
-#show {
-  on-ho
-}
-
 #logo {
   font-family: "Megrim";
   font-size: 40px;
+  text-decoration: underline;
 }
 
 .units > * {
@@ -54,4 +51,8 @@ script {
 .units > :last-child {
   transform: rotatex(180deg) translatey(15px); 
   filter: blur(4px) brightness(1.5);
+}
+
+div.rotate {
+  transform: rotate(90deg);
 }

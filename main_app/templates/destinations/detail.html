@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<h1 class="center">{{ dest.name }} &#8862;</h1>
+<h1 class="center">{{ dest.name }}<span><div class="rotate">&#8862;</div></span></h1>
 {% for act in dest.activities_set.all %}
 
 <div class="row">
@@ -62,7 +62,7 @@
 
 
 
-    <div id="show" style="cursor:pointer; font-size:22px; right-align;">Add New<span style="font-size: 1.5em;">&#10753;</span></div>
+    <div id="show" style="cursor:pointer; font-size:22px;">Add New<span style="font-size: 1.5em;">&#10753;</span></div>
      <div class="menu" style="display: none;">
       <div class="card">
   
