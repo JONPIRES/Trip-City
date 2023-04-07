@@ -24,8 +24,6 @@
                     
                     <li><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}    
-                    <li><a href="{% url 'post_create' %}">Add Posts</a></li>
-                    <li><a href="{% url 'post_index' %}">Posts</a></li>
                     <li><a href="{% url 'destination_create' %}">Add Destination</a></li>
                     <li><a href="{% url 'index' %}">View Trips</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>

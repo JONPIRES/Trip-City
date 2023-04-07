@@ -13,11 +13,10 @@ import uuid
 import boto3
 import os
 
-
-
 # Create your views here.
 def home(request):
-  return render(request, 'home.html')
+  act = Photo.objects.all
+  return render(request, 'home.html', {'act':act})
 
 def about(request):
   return render(request, 'about.html')
@@ -86,6 +85,7 @@ def post_index(request):
     'post': post
   })
 
+@login_required
 def post_detail(request, post_id):
     post = Posts.objects.get(id=post_id)
     user_id=request.user.id
