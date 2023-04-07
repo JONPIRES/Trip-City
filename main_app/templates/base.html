@@ -7,45 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trip City</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/png" href="https://imgur.com/R2o4Uay"/>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+  
 
 </head>
-<body>
-    <header class="navbar-fixed">
+<body >
+    <header>
         <nav>
-            <div class="nav-wrapper blue darken-4">
+            <div class="navbar-wrapper">
                 <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo" id="logo">&nbsp;&nbsp;Trip City</a></li>
+                <li><a href="{% url 'home' %}" id="logo">Trip City</a></li>
                 </ul>
-                <ul class="right">
+                <ul class="nav justify-content-end">
                     
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li class="nav-item nav-link px-3"><a href="{% url 'about' %}">About</a></li>
                     {% if user.is_authenticated %}    
                     
-                    <li><a href="{% url 'destination_create' %}">Add Destination</a></li>
-                    <li><a href="{% url 'index' %}">View Trips</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item nav-link px-3"><a href="{% url 'destination_create' %}">Add Destination</a></li>
+                    <li class="nav-item nav-link px-3"><a href="{% url 'index' %}">View Trips</a></li>
+                    <li class="nav-item nav-link px-3"><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    <li class="nav-item nav-link px-3"><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li class="nav-item nav-link px-3"><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
                     
                 </ul>
             </div>
         </nav>
     </header>
-    <main class="container">
+    <main class="container"class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <footer class="page-footer blue darken-4">
         <div class="right blue-text text-darken-3">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
      </footer>
