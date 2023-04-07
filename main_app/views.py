@@ -22,22 +22,25 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def dest_index(request):
   dest = Destination.objects.filter(user=request.user)
   return render(request, 'destinations/index.html', {
     'dest': dest
   })
 
+# Destinations Functions\/\/\/
 
 class DestCreate(LoginRequiredMixin,CreateView):
   model = Destination
-  fields = ['name', 'date', 'days']
+  fields = ['name', 'date', 'days', 'notes']
 
   def form_valid(self,form):
     # form.instance: is the user object based on the user model we're enheriting
     form.instance.user = self.request.user
     return super().form_valid(form)
-  
+
+@login_required  
 def dest_detail(request, dest_id):
     dest = Destination.objects.get(id=dest_id)
     act_form = ActivitiesForm()
@@ -45,22 +48,81 @@ def dest_detail(request, dest_id):
       'dest': dest, 'act_form': act_form
   })
   
+class DestUpdate(LoginRequiredMixin,UpdateView):
+  model = Destination
+  fields = ['name', 'date', 'days']
+
+class DestDelete(LoginRequiredMixin,DeleteView):
+  model = Destination
+  success_url = '/destination'
+
+# Activities Form\/\/\/
+
+@login_required
 def add_activity(request, dest_id):
   form = ActivitiesForm(request.POST)
 
   if form.is_valid():
     new_act = form.save(commit=False)
-    new_act.destination = dest_id
+    new_act.destination_id = dest_id
     new_act.save()
-  return redirect('dest_detail', dest_id=dest_id)
-  
-class DestUpdate(UpdateView):
-  model = Destination
-  fields = ['name', 'date', 'days']
+    return redirect('dest_detail', dest_id=dest_id)
 
-class DestDelete(DeleteView):
-  model = Destination
-  success_url = '/destination'
+class ActUpdate(UpdateView):
+    model=Activities
+    fields=['name','duration', 'date', 'notes']
+
+class ActDelete(DeleteView):
+    model=Activities
+    success_url='/destination'
+
+    # Post Functions
+
+def post_index(request):
+  post = Posts.objects.all()
+  return render(request, 'post/index.html', {
+    'post': post
+  })
+
+
+class PostCreate(LoginRequiredMixin,CreateView):
+    model = Posts
+    fields = ['description','rating', 'comment']
+
+    def form_valid(self,form):
+      # form.instance: is the user object based on the user model we're enheriting
+      form.instance.user = self.request.user
+      return super().form_valid(form)
+      
+class PostUpdate(UpdateView):
+    model=Activities
+    fields=['description','comment', 'rating']
+
+class PostDelete(DeleteView):
+    model=Activities
+    success_url='/posts'
+
+# Posts Photos \/\/
+
+def add_photo(req,post_id):
+  photo_file = req.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    #uuid generates a hex of 32 charactrers but we drop that to 6 characters with the [:6]  / the rfind wants to find the '.' in the name and the basically get the '. and the rest whick would be the file type (.jpg)
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      bucket = os.getenv('S3_BUCKET')
+      s3.upload_fileobj(photo_file, bucket, key)
+      url = f"{os.getenv('S3_BUCKET')}{bucket}/{key}"
+      Photo.objects.create(url=url, post_id=post_id)
+    except Exception as e:
+      print('an error occured uploading file to s3')
+      print(e)
+  return redirect('detail', post_id=post_id)
+
+
+
+  # User Functions \/\/
 
 def signup(req):
   error_message = ''

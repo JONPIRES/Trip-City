@@ -3,9 +3,9 @@
 {% block content %}
 
 {% if object %}
-  <h1>Edit Trip<span class="teal-text">{{ destination.name }}</span></h1>
+  <h1 class="center">Edit Trip<span class="white-text"> "{{ destination.name }}"</span></h1>
 {% else %}
-  <h1>Plan Trip &#9992;</h1>
+  <h1 class="center">Plan Trip &#9992;</h1>
 {% endif %}
 
 
@@ -17,7 +17,7 @@
     <!-- Render the inputs inside of <tr>s & <td>s -->
     {{ form.as_table }}
   </table>
-  <input type="submit" value="SUBMIT" class="btn blue darken-4">
+  <input type="submit" value="Let's go!" class="btn blue darken-4" style="font-family:Bebas Neue; font-size: 24px;">
 </form>
 
 <script class="blue accent-2">
