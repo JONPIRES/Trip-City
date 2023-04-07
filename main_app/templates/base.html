@@ -7,41 +7,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trip City</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+   
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="icon" type="image/png" href="https://imgur.com/R2o4Uay"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
 
 </head>
 <body>
-    <header class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper blue darken-4">
-                <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo" id="logo">&nbsp;&nbsp;Trip City</a></li>
+    <header>
+        <!-- <nav class="navbar navbar-light" style="background-color: #FAE3D9;"> -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Trip City</a>
+              <img src="https://media.discordapp.net/attachments/1067565429771481131/1093975964557508719/trip_city_logo.jpeg?width=1102&height=1102" alt="logo" width="30" height="30" class="d-inline-block align-text-top">
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Sign Up</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Add Trip</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">View My Trips</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Watch The World 🌎
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Add Posts</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
                 </ul>
-                <ul class="right">
-                    
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    {% if user.is_authenticated %}    
-                    <li><a href="{% url 'destination_create' %}">Add Destination</a></li>
-                    <li><a href="{% url 'index' %}">View Trips</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                    {% else %}
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                    {% endif %}
-                    
-                </ul>
+
             </div>
         </nav>
     </header>
-    <main class="container">
+    <main class="container"class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
         {% block content %}
         {% endblock %}
     </main>
-  	<footer class="page-footer blue darken-4">
-       <div class="right blue-text text-darken-3">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <footer class="page-footer blue darken-4">
+        <div class="right blue-text text-darken-3">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
     </footer>
 </body>
 </html>
