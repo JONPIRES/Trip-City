@@ -80,15 +80,17 @@ class ActDelete(DeleteView):
 
 def post_index(request):
   post = Posts.objects.all()
+  
+  # print(f"this is the user id {user_id}")
   return render(request, 'post/index.html', {
     'post': post
   })
 
-@login_required  
 def post_detail(request, post_id):
     post = Posts.objects.get(id=post_id)
+    user_id=request.user.id
     return render(request, 'post/detail.html', {
-      'post': post
+      'post': post,"user":user_id
   })
 
 class PostCreate(LoginRequiredMixin,CreateView):
