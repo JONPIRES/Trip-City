@@ -66,7 +66,33 @@ body {
     color: white;
   }
   
+  .card {
+    height: 400px; /* set a fixed height for the cards */
+  }
+  
+  .card-img-top {
+    height: 200px; /* set a fixed height for the image */
+    object-fit: cover; /* use object-fit to adjust how the image fits within the container */
+  }
+  .carousel-control-prev, .carousel-control-next {
+    background-color: #a32525;
+    opacity: 0.5;
+  }
+  
+  .carousel-control-prev:hover, .carousel-control-next:hover {
+    opacity: 1;
+  }
 
+  .carousel-indicators li {
+    background-color: #333; /* dark gray */
+    color: #fff; /* white */
+    z-index: 1;
+  }
+  
+  .carousel {
+    position: relative;
+    z-index: 0;
+  }
   main {
     flex: 1 0 auto;
   }
