@@ -29,25 +29,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sign Up</a>
+                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Login</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Add Trip</a>
+                            <a class="nav-link" href="{% url 'destination_create' %}">Add Trip</a>
                           </li>
                           <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="{% url 'index' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Watch The World 🌎
                             </a>
  
                             
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Add Posts</a></li>
+                              <li><a class="dropdown-item" href="posts">Add Posts</a></li>
                               <li><a class="dropdown-item" href="#">Another action</a></li>
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -55,8 +55,8 @@
                           </li>
                     </ul>
                     <div class="left-side d-flex flex-row-reverse">
-                        <div class="p-2">Log Out</div>
-                        <div class="p-2">View My Trips</div>
+                        <a class="p-2 nav-link" href="{% url 'logout' %}">Log Out</a>
+                        <a class="p-2 nav-link" href="{% url 'index' %}">View My Trips</a>
                       </div>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Where to?" aria-label="Search">
@@ -120,9 +120,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <footer class="page-footer blue darken-4">
-        <div class="right blue-text text-darken-3">All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
-    </footer>
+    <footer>
+        <div>All Rights Reserved, &copy; 2025 Trip City &nbsp;</div>
+     </footer>
 </body>
 
 </html>
