@@ -131,3 +131,15 @@ body {
  .trips-arrow {
   transform: rotateZ('-90deg')
  }
+
+ .carousel-custom {
+  position: relative;
+}
+
+.search-overlay {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-35%, -50%);
+  z-index: 1;
+}
