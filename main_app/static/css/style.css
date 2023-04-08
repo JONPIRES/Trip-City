@@ -21,7 +21,7 @@
 
 
 /* .nav-item {
-  font-size: 1.5em;
+  font-size: 3em;
   color:rgb(255, 149, 20);
   margin-top: -2em;
 } */
@@ -101,10 +101,13 @@ body {
 
  .search-btn {
   font-family: "Bebas Neue";
-  color: #163ed0;
+  color: white;
+  background-color: #0023ff;
+  font-weight: 100;
  }
  .search-btn:hover {
-  background-color: rgb(201, 101, 39);
+  color: #0023ff;
+  background-color: white;
 }
 
  script {
@@ -130,4 +133,11 @@ body {
 
  .trips-arrow {
   transform: rotateZ('-90deg')
+ }
+
+ #plan-trip-bg {
+  opacity: 0.5;
+  z-index: -5;
+  transform: translateY(20);
+  transform: translateX(20);
  }

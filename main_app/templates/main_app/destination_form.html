@@ -5,15 +5,18 @@
 {% if object %}
   <h1 class="center">Edit<span class="white-text"> "{{ destination.name }}"</span> trip &#9998;</h1>
 {% else %}
-  <h1 class="display-1">Plan Trip&#10147;</h1>
+  <h1 class="display-1">Plan Trip</h1>
 {% endif %}
 
+  
+  <img src="https://images.unsplash.com/photo-1416255856099-5f33ae760b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80" alt="Poland" class="d-block w-100" id="plan-trip-bg">
+  </div>
 
 <!-- Leaving the action empty makes the form post to the same url used to display it -->
 <form action="" method="POST" class="blue-text text-accent-4">
   <!-- Django requires the following for security purposes -->
   {% csrf_token %}
-  <table>
+  <table class="overlay">
     <!-- Render the inputs inside of <tr>s & <td>s -->
     {{ form.as_table }}
   </table>
