@@ -6,24 +6,19 @@
 }
 
 
-
-#logo {
+/* #logo {
   color:#0023FF;
   border:#d3d5e2;
  font-family: "Megrim";
  font-size: 40px;
  text-decoration: underline;
  /* font-style: italic; */
- font-weight:900
-}
-.navbar .nav-link {
+ /* font-weight:900 */ */
+/* } */
+/* .navbar .nav-link {
   color: #0023FF;
-}
+} */
 
-.custom-search-btn {
-  background-color: red;
-  color: #61C0BF;
-}
 
 /* .nav-item {
   font-size: 1.5em;
@@ -104,11 +99,13 @@ body {
     background: radial-gradient(50% 25% at center, rgb(240, 203, 190), rgb(244, 175, 150), rgb(246, 158, 126));
  } */
 
- button {
+ .search-btn {
   font-family: "Bebas Neue";
-  background-color: #0023FF;
-  color: red;
+  color: #163ed0;
  }
+ .search-btn:hover {
+  background-color: rgb(201, 101, 39);
+}
 
  script {
   color:#030307
