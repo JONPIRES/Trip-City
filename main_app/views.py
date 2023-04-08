@@ -142,6 +142,7 @@ class PostActDelete(LoginRequiredMixin,DeleteView):
 
   # User Functions \/\/
 
+@login_required
 def signup(req):
   error_message = ''
   if req.method == "POST":
