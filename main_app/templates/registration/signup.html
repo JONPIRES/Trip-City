@@ -3,12 +3,15 @@
 
 <h1 class="center">Sign Up</h1>
 
-<p class="red-text">{{ error_message }}</p>
 
-<form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="Sign Up">
-</form>
+<div class="card bg-secondary w-75 h-25 mx-auto shadow-lg">
+  <form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn" value="Sign Up">
+  </form>
+</div>
+
+<p class="red-text">{{ error_message }}</p>
 
 {% endblock %}
