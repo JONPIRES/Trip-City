@@ -99,15 +99,15 @@ body {
     background: radial-gradient(50% 25% at center, rgb(240, 203, 190), rgb(244, 175, 150), rgb(246, 158, 126));
  } */
 
- .search-btn, button {
+ .search-btn, .button, .btn {
   font-family: "Bebas Neue";
   color: white;
-  background-color: #0023ff;
+  background-color: black;
   font-weight: 100;
   opacity: 1;
  }
- .search-btn:hover {
-  color: #0023ff;
+ .search-btn:hover, button, .btn {
+  color: black;
   background-color: white;
 }
 
@@ -168,8 +168,59 @@ body {
   transform: translateY(-250px);
   transform: translateX();
   color: black;
-  opacity: 0.8;
-  border-color: black;
+  opacity: 0.7;
+  
   width: 300px;
   height: 300px;
 }
+
+.trips-card-font {
+  color: black;
+  text-decoration: none;
+  width: 50px;
+}
+
+#trips-cards, #new-act-form {
+  background-color: #5089c6;
+  background-image: linear-gradient(to bottom, #5089c6, #5089c6, #5089c6, #5089c6, #5089c6, #4c82bc, #477ab2, #4373a8, #3a6392, #30547d, #274568, #1e3754);
+  margin: 10px auto;
+  opacity: 1;
+}
+
+.trips-card-font:hover {
+  color: black;
+}
+
+.my-trips-notes {
+  color: red;
+  opacity: 0.6;
+}
+
+#card-title {
+  text-align: center;
+  margin-top: 3%;
+}
+
+.card-content p {
+  margin-bottom: 0.1rem;
+  width: 75%;
+  margin-left: 8%;
+}
+
+#add-trip-notes {
+  text-align: center;
+  text-decoration: none;
+  color: #030307;
+}
+
+#add-trip-notes:hover {
+  color:#030307;
+  opacity: 0.8;
+}
+
+#trips-cards-line {
+  color: black;
+  background-color: black;
+  height: 3px;
+}
+

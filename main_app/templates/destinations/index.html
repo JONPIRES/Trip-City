@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="container">
 <h1 class="display-1">Trips</h1>
 
 <div class="row">
-  <div class="s6">
-    {% for dest in dest %} 
-  <a href="{% url 'dest_detail' dest.id %}">
-    <div class="card z-depth-1 hoverable">
-      <div class="card-content blue accent-2">
-        <span class="card-title white-text center">{{ dest.name }}</span>
-        <p class="white-text">Date: {{ dest.date }}</p>
-        <p class="white-text">Days: {{ dest.days }}</p>
-        <p class="white-text">User: {{ dest.user.name }}</p>
-        <p class="white-text">Notes: {{ dest.notes }}</p>
+  {% for dest in dest %} 
+  <div class="col-md center">
+  <a href="{% url 'dest_detail' dest.id %}" class="trips-card-font">
+    <div class="card" style="height: 13rem; width: 20rem;" id="trips-cards">
+      <div class="card-content">
+        <h4 id="card-title" class="d-flex justify-content-center">{{ dest.name }}</h4>
+        <hr style="width: 80%;" class="mx-auto" id="trips-cards-line">
+        <p><span>Date</span>:    {{ dest.date }}</p>
+        <p><span>Days</span>:    {{ dest.days }}</p>
+        <p><span>User</span>:   {{ dest.user.username }}</p>
+        <p><span>Notes</span>:   {{ dest.notes }}</p>
         </div>
     </div>
   </a>
-  {% endfor %}
+</div>
+{% if forloop.counter|divisibleby:3 and not forloop.last %}
+      </div><div class="row">
+    {% endif %}
+{% endfor %}
 </div>
 </div>
 

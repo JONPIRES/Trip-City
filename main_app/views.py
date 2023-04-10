@@ -15,8 +15,11 @@ import os
 
 # Create your views here.
 def home(request):
+  return render(request, 'home.html')
+
+def world(request):
   act = Photo.objects.all
-  return render(request, 'home.html', {'act':act})
+  return render(request, 'world.html', {'act':act})
 
 def about(request):
   return render(request, 'about.html')
@@ -49,7 +52,7 @@ def dest_detail(request, dest_id):
   
 class DestUpdate(LoginRequiredMixin,UpdateView):
   model = Destination
-  fields = ['name', 'date', 'days']
+  fields = ['name', 'date', 'days', 'notes']
 
 class DestDelete(LoginRequiredMixin,DeleteView):
   model = Destination
