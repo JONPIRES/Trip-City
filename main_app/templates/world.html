@@ -1,19 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<div class="row">
-    <div class="col-md-4">
-        {% for act in act %}
-        <a href=" {% url 'post_detail' act.post.id %} ">
-            <div class="card">
-                <div class="card-content">
-                    <img src="{{act.url}}" alt="" class="responsive-img card-panel"><br>
-                    <p>{{ act.title }}</p>
-                    <p>{{ act.comment }}</p> 
+<style>
+    .card-img-top {
+  height: 400px;
+  object-fit: cover;
+}
+</style>
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card-columns">
+          {% for act in act %}
+            <a href="{% url 'post_detail' act.post.id %}">
+              <div class="card">
+                <img class="card-img-top" src="{{ act.url }}" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">{{ act.title }}</h5>
+                  <p class="card-text">{{ act.comment }}</p>
                 </div>
-            </div>
-        </a>
-        {% endfor %}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}
