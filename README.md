@@ -38,19 +38,12 @@ Features
 8. Create comments on your trip
 
 
-Link to App:
+### Link to App:
+https://trip-city.herokuapp.com/
 
-
-Stretch 
-Social media sites are designed to have a suite of unique and engaging features that enrich the site. When we started, we wanted to incorporate features like
-1. A like button that would update features in MongoDB
-2. A share button that would, at the very least, send an email with the link of the user's profile to an inputted email
-3. A follow feature and "following" tab that would let you quickly see all the content from your followed accounts
-4. Tags that would be attached to all images to allow themed searches
-5. Deeper incorporation of the Unsplash API in elements like filling fake user's accounts with photos
-
-Given more time, we feel like these features (and more) would be easily achievable, but given the one-week time frame and, frankly, our limited experience building full-stack applications, we were not able to accomplish them.
-
+### What's next:
+Things we'd like to finish:
+The search functionality
 
 Contributing Teammates
 -David Velasquez
