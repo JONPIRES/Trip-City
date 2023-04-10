@@ -29,14 +29,32 @@
 a {
   color: red;
 }
+/* .signin {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+} */
 
-body {
+/* .login {
+  width: 360px;
+  height: min-cotent;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+}
+.login h1 {
+  font-size: 36px;
+  margin-bottom: 25px;
+} */
+/* body {
+  
     display:flex;
     min-height: 100vh;
     flex-direction: column;
     background-color: burlywood;
     font-family: "Bebas Neue";
-  }
+  } */
 
   h1 {
     text-align: center;

@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from datetime import date 
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
@@ -40,7 +41,7 @@ class Posts(models.Model):
         default=RATING[0][0])
 
     def get_absolute_url(self):
-        return reverse('post_index')
+        return reverse('post_detail', kwargs={'post_id': self.id})
 
 
 class Photo(models.Model):
@@ -48,8 +49,12 @@ class Photo(models.Model):
     post = models.ForeignKey(Posts, on_delete=models.CASCADE)
     title = models.CharField(max_length=30, default='',blank=True)
     comment = models.TextField(max_length=250, default="No comment")
+    time = models.TimeField(auto_now=False, auto_now_add=False, default=timezone.now().time())
 
     def get_absolute_url(self):
         return reverse('post_index')
+    
+    class Meta:
+        ordering = ['-time']
 
 

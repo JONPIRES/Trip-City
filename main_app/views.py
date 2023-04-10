@@ -15,8 +15,11 @@ import os
 
 # Create your views here.
 def home(request):
+  return render(request, 'home.html')
+
+def world(request):
   act = Photo.objects.all
-  return render(request, 'home.html', {'act':act})
+  return render(request, 'world.html', {'act':act})
 
 def about(request):
   return render(request, 'about.html')
@@ -79,9 +82,7 @@ class ActDelete(LoginRequiredMixin,DeleteView):
 
 
 def post_index(request):
-  post = Posts.objects.all()
-  
-  # print(f"this is the user id {user_id}")
+  post = Posts.objects.filter(user=request.user)
   return render(request, 'post/index.html', {
     'post': post
   })
@@ -142,7 +143,6 @@ class PostActDelete(LoginRequiredMixin,DeleteView):
 
   # User Functions \/\/
 
-@login_required
 def signup(req):
   error_message = ''
   if req.method == "POST":
