@@ -206,8 +206,8 @@ a {
 }
 
 /* index cards */
-#view-trip-form {
-  opacity: 0.81;
+#view-trip-form, #trips-cards {
+  opacity: 0.91;
 }
 
 .trips-card-font {
@@ -221,7 +221,7 @@ a {
   background-color: #5089c6;
   background-image: linear-gradient(to bottom, #fefefe, #f1f1f5, #e3e5ec, #d5d9e4, #c5cddb, #b7c3d6, #a8bad2, #98b1cd, #87a7cb, #769dca, #6393c8, #5089c6);
   margin: 10px auto;
-  opacity: 1;
+  opacity: 0.91;
 }
 
 /* #trips-cards:hover {
@@ -291,6 +291,16 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
   min-height: 100vh;
 }
 
+.btn-remove-trip {
+  margin-top: -20px;
+}
+
+#trip-detail-table {
+  margin-top: -60px;
+}
+
+
+
 
 .parallax {
   background-image: url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
@@ -311,6 +321,15 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 .parallax-post-edit {
+  background-image: url("https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1506&q=80");
+  min-height: 500px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-trips-edit {
   background-image: url("https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1506&q=80");
   min-height: 500px; 
   background-attachment: fixed;
