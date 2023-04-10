@@ -2,12 +2,12 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-4">
         {% for act in act %}
         <a href=" {% url 'post_detail' act.post.id %} ">
             <div class="card">
                 <div class="card-content">
-                    <img src="{{act.url}}" alt="" class="responsive-img card-panel"><br>
+                    <img src="{{act.url}}" alt="" class="card-panel"><br>
                     <p>{{ act.title }}</p>
                     <p>{{ act.comment }}</p> 
                 </div>

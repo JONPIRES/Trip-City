@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import *
+from django.db.models import Q
 from .forms import ActivitiesForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -20,6 +21,12 @@ def home(request):
 def world(request):
   act = Photo.objects.all
   return render(request, 'world.html', {'act':act})
+
+def search(request):
+  query = request.GET.get('q', '')
+  act = Photo.objects.filter(Q(title__icontains=query) | Q(title__trigram_similar=query))
+  return render(request, 'world.html', {'act':act})
+
 
 def about(request):
   return render(request, 'about.html')

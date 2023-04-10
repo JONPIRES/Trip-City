@@ -2,18 +2,11 @@
 {% block content %}
 
 
-<h1 class="display-1">{{ post.name }}{{post.user.username}}</h1>
+<h1 class="display-1">{{ post.description }}</h1>
 <div class="container parallax-post-edit"></div>
 
 
 {% if user == post.user.id %}
-<!-- <div class="card-action">
-  <button style="margin: 10px;" type="submit" class="btn text-center"><a href="{% url 'post_update' post.id %}">Edit Post</a>
-  <form action="{% url 'post_delete' post.id %}" method="POST"></button>
-    {% csrf_token %}
-    <button type="submit" class="btn rounded" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
-  </form>
-</div> -->
 <div class="col-lg-8">
   <!-- Form for the activities -->
 <div class="w-100 p-3" id="show" style="cursor:pointer; font-size: 22px;">&#10753;Add Activity</div>
@@ -42,8 +35,8 @@
     <div class="row">
       <div class="col s4">
         <div class="card my-trip-notes" id="trips-cards" style="height: 14rem; width: 24rem;">
-            <div class="card-content">
-              <h5 id="card-title">{{ post.description }}</h5> 
+            <div class="card-content align-center">
+              <h5 id="card-title">{{ post.comment }}</h5> 
               <p>{{ post.date }}</p><br>
               <p> {{post.comment}} </p>
             </div>
@@ -61,25 +54,23 @@
     
          <div class="row">
              {% for act in post.photo_set.all %}
-              <div class="col s4">
-                <div class="card">
-                    <div class="card-content">
-                      <img src="{{act.url}}" alt="" class="responsive-img card-panel"><br>
+                <div class="card primary">
+                    <div class="card-content ">
+                      <img src="{{act.url}}" alt="" class=""><br>
                       <p> {{act.title}} </p><br>
                       <p> {{act.comment}} </p>
                     </div>
                     {% if user == post.user.id %}
-                    <div class="card-action edit-and-delete-post">
+                    <div class="card-action">
                       <button style="margin: 10px;" type="submit" class="btn blue darken-4 center"><a href="{% url 'post_act_update' act.id %}">Edit Post</a>
                       <form action="{% url 'post_act_delete' act.id %}" method="POST"></button>
                         {% csrf_token %}
-                        <button type="submit" class="btn red center" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
+                        <button type="submit" class="btn red center" >Delete Post</button>
                       </form>
                     </div>
                     {% endif %}
                     
                  </div>
-              </div>
               {% empty %}
               {% endfor %}
         </div>
