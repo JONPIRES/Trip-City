@@ -82,9 +82,7 @@ class ActDelete(LoginRequiredMixin,DeleteView):
 
 
 def post_index(request):
-  post = Posts.objects.all()
-  
-  # print(f"this is the user id {user_id}")
+  post = Posts.objects.filter(user=request.user)
   return render(request, 'post/index.html', {
     'post': post
   })
@@ -145,7 +143,6 @@ class PostActDelete(LoginRequiredMixin,DeleteView):
 
   # User Functions \/\/
 
-@login_required
 def signup(req):
   error_message = ''
   if req.method == "POST":
