@@ -24,7 +24,7 @@ def world(request):
 
 def search(request):
   query = request.GET.get('q', '')
-  act = Photo.objects.filter(Q(title__icontains=query) | Q(title__trigram_similar=query))
+  act = Photo.objects.filter(Q(title__icontains=query))
   return render(request, 'world.html', {'act':act})
 
 
