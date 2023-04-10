@@ -5,7 +5,20 @@
   font-family: "Bebas Neue";
 }
 
-
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  padding-bottom: 100px; 
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+}
 /* #logo {
   color:#0023FF;
   border:#d3d5e2;
@@ -120,12 +133,12 @@ a {
  .search-btn, .button, .btn {
   font-family: "Bebas Neue";
   color: white;
-  background-color: #112DED;
+  background-color: #F2278E;
   font-weight: 100;
   opacity: 1;
  }
  .search-btn:hover, button, .btn {
-  color: #112DED;
+  color: #F2278E;
   background-color: white;
 }
 
