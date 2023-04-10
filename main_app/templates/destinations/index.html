@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container">
+
 <h1 class="display-1">Trips</h1>
+<div class="container parallax">
 
 <div class="row">
   {% for dest in dest %} 
   <div class="col-md center">
-  <a href="{% url 'dest_detail' dest.id %}" class="trips-card-font">
-    <div class="card" style="height: 13rem; width: 20rem;" id="trips-cards">
+  <a href="{% url 'dest_detail' dest.id %}" class="trips-card-font zoom-on-hover" id="view-trip-form">
+    <div class="card card-img-top" style="height: 13rem; width: 20rem;" id="trips-cards">
       <div class="card-content">
         <h4 id="card-title" class="d-flex justify-content-center">{{ dest.name }}</h4>
         <hr style="width: 80%;" class="mx-auto" id="trips-cards-line">
@@ -25,6 +26,6 @@
     {% endif %}
 {% endfor %}
 </div>
-</div>
+
 
 {% endblock %}

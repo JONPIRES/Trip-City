@@ -199,28 +199,52 @@ a {
   transform: translateY(-250px);
   transform: translateX();
   color: black;
-  opacity: 0.7;
+  opacity: 0.77;
   
   width: 300px;
   height: 300px;
+}
+
+/* index cards */
+#view-trip-form {
+  opacity: 0.81;
 }
 
 .trips-card-font {
   color: black;
   text-decoration: none;
   width: 50px;
+  /* opacity: ; */
 }
 
 #trips-cards, #new-act-form {
   background-color: #5089c6;
-  background-image: linear-gradient(to bottom, #5089c6, #5089c6, #5089c6, #5089c6, #5089c6, #4c82bc, #477ab2, #4373a8, #3a6392, #30547d, #274568, #1e3754);
+  background-image: linear-gradient(to bottom, #fefefe, #f1f1f5, #e3e5ec, #d5d9e4, #c5cddb, #b7c3d6, #a8bad2, #98b1cd, #87a7cb, #769dca, #6393c8, #5089c6);
   margin: 10px auto;
   opacity: 1;
+}
+
+/* #trips-cards:hover {
+transform: scale(1.15);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+} */
+
+.zoom-on-hover {
+  overflow: hidden;
+}
+
+.zoom-on-hover .card-img-top   {
+  transition: transform 0.5s ease;
+}
+
+.zoom-on-hover:hover .card-img-top {
+  transform: scale(1.1); 
 }
 
 .trips-card-font:hover {
   color: black;
 }
+
 
 .my-trips-notes {
   color: red;
@@ -250,8 +274,47 @@ a {
 }
 
 #trips-cards-line {
-  color: black;
-  background-color: black;
+  color: rgb(226, 109, 7);
+  background-color: rgb(212, 108, 11);
   height: 3px;
 }
 
+.posts-bg-image {
+  background-repeat: repeat-y;
+}
+
+.edit-and-delete-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+.parallax {
+  background-image: url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  min-height: 500px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-post {
+  background-image: url("https://images.unsplash.com/photo-1501871297999-798194b0823b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  min-height: 500px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-post-edit {
+  background-image: url("https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1506&q=80");
+  min-height: 500px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
