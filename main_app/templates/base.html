@@ -80,7 +80,7 @@
                     </div>
                   </div>
                   {% endif %}
-                  <form class="d-flex" role="search">
+                  <form action="{% url 'search' %}" class="d-flex" role="search" method="get">
                     <input class="form-control me-2" type="search" placeholder="Where to? " aria-label="Search" name="q">
                     <button class="search-btn" type="submit">Wander</button>
                   </form>
