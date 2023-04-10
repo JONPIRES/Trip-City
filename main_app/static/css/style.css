@@ -89,14 +89,14 @@ a {
     color: white;
   }
   
-  .card {
+  /* .card {
     height: 400px; /* set a fixed height for the cards */
-  }
+  /* } */
   
-  .card-img-top {
+  /* .card-img-top {
     height: 200px; /* set a fixed height for the image */
-    object-fit: cover; /* use object-fit to adjust how the image fits within the container */
-  }
+    /* object-fit: cover; use object-fit to adjust how the image fits within the container */ */
+  /* } */
   .carousel-control-prev, .carousel-control-next {
     background-color: #a32525;
     opacity: 0.5;
