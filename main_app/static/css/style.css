@@ -120,12 +120,12 @@ a {
  .search-btn, .button, .btn {
   font-family: "Bebas Neue";
   color: white;
-  background-color: black;
+  background-color: #112DED;
   font-weight: 100;
   opacity: 1;
  }
  .search-btn:hover, button, .btn {
-  color: black;
+  color: #112DED;
   background-color: white;
 }
 
