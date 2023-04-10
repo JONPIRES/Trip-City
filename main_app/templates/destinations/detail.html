@@ -19,6 +19,7 @@
         <td>{{ act.name}}</td>
         <td>{{ act.date}}</td>
         <td>{{ act.duration}}</td>
+        <br>
         <td>{{ act.notes}}</td>
        </tr>
       {% endfor %}
@@ -51,15 +52,15 @@
        </div>
       </div>
   </div>
-
+  {% for act in post.photo_set.all %}
   <div class="col s6">
-
+<!-- form for adding activities -->
     <div id="show" style="cursor:pointer; font-size:22px;"><span style="font-size: 1.5em;">&#10753;</span>New Activity</div>
     
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
      <div class="menu" style="display: none;">
       <div class="card">
-  
+  {% endfor %}
         <!-- <div class="card-content">
             <span class="card-title center">Activity</span>
            <table class="table table-striped">
