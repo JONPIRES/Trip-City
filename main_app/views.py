@@ -52,7 +52,7 @@ def dest_detail(request, dest_id):
   
 class DestUpdate(LoginRequiredMixin,UpdateView):
   model = Destination
-  fields = ['name', 'date', 'days']
+  fields = ['name', 'date', 'days', 'notes']
 
 class DestDelete(LoginRequiredMixin,DeleteView):
   model = Destination
