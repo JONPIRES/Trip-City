@@ -1,14 +1,87 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="center">Sign Up</h1>
+<style>
+  .animation-container {
+    /* remove position: absolute */
+    top: 70%;
+    left: 90%;
+    z-index: -999;
+  }
 
-<p class="red-text">{{ error_message }}</p>
+  .signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    margin-top: 150px;
+    /* add margin-top to make room for the animation */
+    text-align: center;
+    /* center both the signup card and the animation */
+  }
 
-<form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="Sign Up">
-</form>
+  body {
+    background-color: #F4B4CC;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card {
+    background-color: #F4B4CC;
+  }
+
+  /* form p {
+    margin-bottom: 0.5rem;
+  }
+
+  form .form-control {
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    text-align: left;
+  } */
+
+  .btn-primary {
+    background-color: #112DED;
+    border-color: #FFC0CB;
+  }
+
+  .btn-primary:hover {
+    color: #112DED;
+    background-color: white;
+  }
+</style>
+
+<div class="signup-container">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="center">Road Trip?!</h1>
+
+            <p class="red-text">{{ error_message }}</p>
+
+            <form method="POST" action="{% url 'signup' %}" class="custom-form">
+              {% csrf_token %}
+              <div class="form-group text-center">
+                {{ form.as_p }}
+                <input type="hidden" name="next" value="{{ next }}">
+              </div>
+              <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Sign Up">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="animation-container">
+    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_dwGMPRJ7zu.json" background="transparent"
+      speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+  </div>
+</div>
 
 {% endblock %}

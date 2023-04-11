@@ -1,13 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Log In</h1>
-
-<form method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}">
-    <button type="submit" class="btn blue darken-4">Log In</button>
-  </form>
+<style>
+  body {
+    background-image: url(https://images.unsplash.com/photo-1518076630544-b347c85f7fbb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh
+  }
+  .btn-primary {
+    background-color: #F2278E;
+    border-color: #FFC0CB;
+  }
+  
+  .btn-primary:hover {
+    color: #F2278E;
+    background-color: white;
+  }
+</style>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-center">Hello Again!</h5>
+          <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group text-center">
+              {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}">
+            </div>
+            
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

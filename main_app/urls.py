@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
   path('', views.home, name='home'),
+  path('world/', views.world, name='world'),
+  path('search/', views.search, name='search'),
   path('about/', views.about, name='about'),
   # Destinations
   path('destination/', views.dest_index, name='index'),
@@ -16,10 +18,14 @@ urlpatterns = [
   path('activities/<int:pk>/update/', views.ActUpdate.as_view(), name='act_update'),
   # Posts\/\/
   path('posts/', views.post_index, name='post_index'),
-  # path('posts/<int:post_id>/', views.post_detail, name='post_detail'),
+  path('posts/<int:post_id>/detail', views.post_detail, name='post_detail'),
   path('posts/create/', views.PostCreate.as_view(), name='post_create'),
   path('posts/<int:pk>/update/', views.PostUpdate.as_view(), name='post_update'),
   path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
+  # Photos
+  path('photos/<int:post_id>/add_photo', views.add_photo, name='add_photo'),
+  path('photos/<int:pk>/update/', views.PostActUpdate.as_view(), name='post_act_update'),
+  path('photos/<int:pk>/delete/', views.PostActDelete.as_view(), name='post_act_delete'),
   # Users
   path('accounts/signup/', views.signup, name='signup'),
 
