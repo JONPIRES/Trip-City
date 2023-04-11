@@ -5,3 +5,4 @@ class ActivitiesForm(ModelForm):
   class Meta:
     model = Activities
     fields = ['name', 'duration', 'date','notes']
+

@@ -1,45 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- <h1 class="center-align blue-text text-darken-4" id="logo">Trip City</h1>
+<style>
+  .row {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-<div class="row">
-    <div class="col s4">
-        {% for act in act %}
-        <a href=" {% url 'post_detail' act.post.id %} ">
-            <div class="card">
-                <div class="card-content">
-                    <img src="{{act.url}}" alt="" class="responsive-img card-panel"><br>
-                    <p>{{ act.title }}</p>
-                    <p>{{ act.comment }}</p> 
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
-======= -->
+.card {
+  flex: 1;
+  margin: 10px;
+  /* height: 400px; */
+}
+
+.carousel-item .card {
+  height: 500px;
+}
 
 
-<!-- THE CODE SNIPET BELOW IS THE TEST FOR GENERATING THE CAROUSEL ITEMS BASED ON THE IMGS FROM THE POSTS  -->
-
-<!-- {% for act in act %}
-<a href=" {% url 'post_detail' act.post.id %} ">
-<div class="col-md-4">
-<div class="card">
-  <img src="{{act.url}}" alt="" class="card-img-top h-100""><br>
-  <div class="card-body">
-    <h5 class="card-title">{{ act.title }}</h5>
-    <p class="card-text">{{ act.comment }}</p>
-  </div>
-</div> 
-</div>
-{% endfor %} -->
-
-
-
-
-
+</style>
 <div id="carouselExample" class="carousel slide carousel-custom">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -90,7 +69,7 @@
   </div>
   <div class="container my-5">
     <h2>Trip Activities: </h2>
-    <div class="row">
+    <div class="row d-flex align-items-stretch">
       <div class="col-md-12">
         <div id="featured-activities" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -126,7 +105,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <div class="row">
+              <div class="row d-flex align-items-stretch">
                 <div class="col-md-4">
                   <div class="card">
                     <img class="card-img-top h-100" src="https://images.unsplash.com/photo-1512734099960-65a682cbfe2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="Big Ben">
@@ -165,10 +144,6 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-            <!-- <ol class="carousel-indicators">
-              <li data-bs-target="#featured-activities" data-bs-slide-to="0" class="active"></li>
-              <li data-bs-target="#featured-activities" data-bs-slide-to="1"></li>
-            </ol> -->
           </div>
   
   {% endblock %}

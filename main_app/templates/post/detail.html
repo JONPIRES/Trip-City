@@ -2,60 +2,61 @@
 {% block content %}
 
 
-<h1 class="center">{{ post.name }} - {{post.user.username}} &#8862;</h1>
+<h1 class="display-1">{{ post.description }}</h1>
+<div class="container parallax-post-edit"></div>
+
 
 {% if user == post.user.id %}
-<div class="card-action">
-  <button style="margin: 10px;" type="submit" class="btn blue darken-4 center"><a href="{% url 'post_update' post.id %}">Edit Post</a>
-  <form action="{% url 'post_delete' post.id %}" method="POST"></button>
-    {% csrf_token %}
-    <button type="submit" class="btn red center" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
-  </form>
-</div>
-<div class="row">
+<div class="col-lg-8">
   <!-- Form for the activities -->
-<div id="show" style="cursor:pointer; font-size: 22px;">Add Activity</div>
-  <div class="col s4 post-form" style="display: none;" >
-    <div class="card">
-      <div class="card-content">
+<div class="w-100 p-3" id="show" style="cursor:pointer; font-size: 22px;">&#10753;Add Activity</div>
+  <div class="col-lg-4 post-form" style="display: none;" >
+    <div class="car">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center rounded" id="new-act-form">
         <form 
         action="{% url 'add_photo' post.id %}" 
         enctype="multipart/form-data" 
-        method="POST" class="card-panel">
+        method="POST" class="card-panel mx-auto">
         {% csrf_token %}
         <input type="file" name="photo-file"><br>
         <h6>Title</h6>
         <input type="txt" name="title"><br>
         <h6>Comment</h6>
         <textarea name="comment" id="comment" rows="10" cols="15"></textarea><br>
-        <button type="submit" class="btn">Upload Photo</button>
+        <button type="submit" class="btn text-white justify-content-end">SHARE</button>
         </form>
       </div>
     </div>
   </div>
 </div>
 {% endif %}
-<div class="row">
-  <div class="col s12">
+<!-- <div class="row">
+  <div class="col s12"> -->
     <div class="row">
       <div class="col s4">
-        <div class="card">
-            <div class="card-content">
-              <p>{{ post.description }}</p> 
+        <div class="card my-trip-notes" id="trips-cards" style="height: 14rem; width: 24rem;">
+            <div class="card-content align-center">
+              <h5 id="card-title">{{ post.comment }}</h5> 
               <p>{{ post.date }}</p><br>
               <p> {{post.comment}} </p>
             </div>
          </div>
       </div>
     </div>
+    <div class="card-action ">
+      <button style="margin: 10px;" type="submit" class="btn text-center mx-auto"><a href="{% url 'post_update' post.id %}">Edit Post</a>
+      <form action="{% url 'post_delete' post.id %}" method="POST"></button>
+        {% csrf_token %}
+        <button type="submit" class="btn rounded" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
+      </form>
+    </div>
          <!-- \/\/\/  Below is the function for the photos  \/\/\/ -->
     
          <div class="row">
              {% for act in post.photo_set.all %}
-              <div class="col s4">
-                <div class="card">
-                    <div class="card-content">
-                      <img src="{{act.url}}" alt="" class="responsive-img card-panel"><br>
+                <div class="card primary">
+                    <div class="card-content ">
+                      <img src="{{act.url}}" alt="" class=""><br>
                       <p> {{act.title}} </p><br>
                       <p> {{act.comment}} </p>
                     </div>
@@ -64,13 +65,12 @@
                       <button style="margin: 10px;" type="submit" class="btn blue darken-4 center"><a href="{% url 'post_act_update' act.id %}">Edit Post</a>
                       <form action="{% url 'post_act_delete' act.id %}" method="POST"></button>
                         {% csrf_token %}
-                        <button type="submit" class="btn red center" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
+                        <button type="submit" class="btn red center" >Delete Post</button>
                       </form>
                     </div>
                     {% endif %}
                     
                  </div>
-              </div>
               {% empty %}
               {% endfor %}
         </div>
@@ -83,7 +83,7 @@
 <script>
   $(document).ready(function(){
       $('#show').click(function() {
-        $('.post-form').toggle("slide");
+        $('.post-form').slideDown("slow");
       });
   });
   </script>

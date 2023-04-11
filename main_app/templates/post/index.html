@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="center">Trips</h1>
+<h1 class="center display-1">Posts</h1>
+<div class="container parallax-post">
+
 
 <div class="row">
 {% for post in post %} 
-<div class="card">
-  <div class="col s3">
-    <a href="{% url 'post_detail' post.id %}">
-      <div class="card z-depth-1 hoverable">
-        <div class="card-content blue accent-2">
-          <span class="card-title white-text center">{{ post.description }}</span>
+<div class="col-md center">
+  <a href="{% url 'post_detail' post.id %}" class="trips-card-font zoom-on-hover" id="view-trip-form">
+      <div class="card card-img-top" style="height: 10rem; width: 20rem;" id="trips-cards">
+        <div class="card-content">
+          <h4 id="card-title" class="d-flex justify-content-center">{{ post.description }}</h4>
+          <hr style="width: 80%;" class="mx-auto" id="trips-cards-line">
           <p class="white-text">{{ post.user.username }}</p>
           <p class="white-text">{{ post.date }}</p>
         </div>
       </div>
     </a>
   </div>
-</div>
+  {% if forloop.counter|divisibleby:3 and not forloop.last %}
+</div><div class="row">
+    {% endif %}
   {% endfor %}
+</div>
+</div>
 </div>
 
 {% endblock %}
