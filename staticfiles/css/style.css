@@ -1,27 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Megrim&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Megrim&display=swap");
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    /* background-color: rgb(246, 158, 126); */
-    background-color: #D7661E;
-    font-family: "Bebas Neue";
-    margin: 0;
-    padding: 0;
-  }
-  
-  main {
-    flex: 1 0 auto;
-  }
-  
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  /* background-color: rgb(246, 158, 126); */
+  background-color: #d7661e;
+  font-family: "Bebas Neue";
+  margin: 0;
+  padding: 0;
+}
 
- 
+main {
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+}
+
 .grid {
   max-width: 1000px;
   margin: 0 auto;
@@ -58,16 +57,12 @@ body {
 
 button {
   font-family: "Bebas Neue";
-  background-color: #0023FF;
+  background-color: #0023ff;
   color: red;
 }
 
 script {
-  color:#0023FF
-}
-
-#show {
-  on-ho
+  color: #0023ff;
 }
 
 #logo {
@@ -76,13 +71,13 @@ script {
 }
 
 .units > * {
-  background-image: url('image.jpeg');
+  background-image: url("image.jpeg");
   background-clip: text;
   color: transparent;
   /* etc. */
 }
 
 .units > :last-child {
-  transform: rotatex(180deg) translatey(15px); 
+  transform: rotatex(180deg) translatey(15px);
   filter: blur(4px) brightness(1.5);
 }

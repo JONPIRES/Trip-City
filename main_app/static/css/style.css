@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Megrim&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Megrim&display=swap");
 
 * {
   font-family: "Bebas Neue";
@@ -11,7 +11,7 @@ html {
 }
 body {
   margin: 0;
-  padding-bottom: 100px; 
+  padding-bottom: 100px;
 }
 footer {
   position: absolute;
@@ -26,7 +26,8 @@ footer {
  font-size: 40px;
  text-decoration: underline;
  /* font-style: italic; */
- /* font-weight:900 */ */
+/* font-weight:900 */
+*/
 /* } */
 /* .navbar .nav-link {
   color: #0023FF;
@@ -69,106 +70,104 @@ a {
     font-family: "Bebas Neue";
   } */
 
-  h1 {
-    text-align: center;
-    font-family: "Bebas Neue";
-    font-size:larger;
-  }
+h1 {
+  text-align: center;
+  font-family: "Bebas Neue";
+  font-size: larger;
+}
 
-  .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-  }
-  
-  /* .card {
-    height: 400px; /* set a fixed height for the cards */
-  /* } */
-  
-  /* .card-img-top {
-    height: 200px; /* set a fixed height for the image */
-    /* object-fit: cover; use object-fit to adjust how the image fits within the container */ */
-  /* } */
-  .carousel-control-prev, .carousel-control-next {
-    background-color: #a32525;
-    opacity: 0.5;
-  }
-  
-  .carousel-control-prev:hover, .carousel-control-next:hover {
-    opacity: 1;
-  }
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  .carousel-indicators li {
-    background-color: #333; /* dark gray */
-    color: #fff; /* white */
-    z-index: 1;
-  }
-  
-  .carousel {
-    position: relative;
-    z-index: 0;
-  }
-  main {
-    flex: 1 0 auto;
-  }
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #a32525;
+  opacity: 0.5;
+}
 
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
 
- 
- /* .container {
+.carousel-indicators li {
+  background-color: #333; /* dark gray */
+  color: #fff; /* white */
+  z-index: 1;
+}
+
+.carousel {
+  position: relative;
+  z-index: 0;
+}
+main {
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+}
+
+/* .container {
     background: radial-gradient(50% 25% at center, rgb(240, 203, 190), rgb(244, 175, 150), rgb(246, 158, 126));
  } */
 
- .search-btn, .button, .btn {
+.search-btn,
+.button,
+.btn {
   font-family: "Bebas Neue";
   color: white;
-  background-color: #F2278E;
+  background-color: #f2278e;
   font-weight: 100;
   opacity: 1;
- }
- .search-btn:hover, button, .btn {
-  color: #F2278E;
+}
+.search-btn:hover,
+button,
+.btn {
+  color: #f2278e;
   background-color: white;
 }
 
- script {
-  color:#030307
- }
+script {
+  color: #030307;
+}
 
-
- .units > * {
-  background-image: url('image.jpeg');
+.units > * {
+  background-image: url("image.jpeg");
   background-clip: text;
   color: transparent;
   /* etc. */
- }
+}
 
- .units > :last-child {
-  transform: rotatex(180deg) translatey(15px); 
+.units > :last-child {
+  transform: rotatex(180deg) translatey(15px);
   filter: blur(4px) brightness(1.5);
- }
+}
 
- div.rotate {
+div.rotate {
   transform: rotate(90deg);
- }
+}
 
- .trips-arrow {
-  transform: rotateZ('-90deg')
- }
+.trips-arrow {
+  transform: rotateZ("-90deg");
+}
 
-
- .carousel-custom {
+.carousel-custom {
   position: relative;
 }
 
@@ -180,33 +179,36 @@ a {
   z-index: 1;
 }
 
-.plan-trip-overlay, .create-post-overlay{
+.plan-trip-overlay,
+.create-post-overlay {
   position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 25%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: black;
-    transform: translateY(-100%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  transform: translateY(-100%);
 }
 
-#plan-trip-form, #create-post-form {
+#plan-trip-form,
+#create-post-form {
   transform: translateY(-250px);
   transform: translateX();
   color: black;
   opacity: 0.77;
-  
+
   width: 300px;
   height: 300px;
 }
 
 /* index cards */
-#view-trip-form, #trips-cards {
+#view-trip-form,
+#trips-cards {
   opacity: 0.91;
 }
 
@@ -217,9 +219,24 @@ a {
   /* opacity: ; */
 }
 
-#trips-cards, #new-act-form {
+#trips-cards,
+#new-act-form {
   background-color: #5089c6;
-  background-image: linear-gradient(to bottom, #fefefe, #f1f1f5, #e3e5ec, #d5d9e4, #c5cddb, #b7c3d6, #a8bad2, #98b1cd, #87a7cb, #769dca, #6393c8, #5089c6);
+  background-image: linear-gradient(
+    to bottom,
+    #fefefe,
+    #f1f1f5,
+    #e3e5ec,
+    #d5d9e4,
+    #c5cddb,
+    #b7c3d6,
+    #a8bad2,
+    #98b1cd,
+    #87a7cb,
+    #769dca,
+    #6393c8,
+    #5089c6
+  );
   margin: 10px auto;
   opacity: 0.91;
 }
@@ -233,18 +250,17 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
   overflow: hidden;
 }
 
-.zoom-on-hover .card-img-top   {
+.zoom-on-hover .card-img-top {
   transition: transform 0.5s ease;
 }
 
 .zoom-on-hover:hover .card-img-top {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 .trips-card-font:hover {
   color: black;
 }
-
 
 .my-trips-notes {
   color: red;
@@ -269,7 +285,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 #add-trip-notes:hover {
-  color:#030307;
+  color: #030307;
   opacity: 0.8;
 }
 
@@ -299,12 +315,9 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
   margin-top: -60px;
 }
 
-
-
-
 .parallax {
   background-image: url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
-  min-height: 500px; 
+  min-height: 500px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -313,7 +326,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 
 .parallax-post {
   background-image: url("https://images.unsplash.com/photo-1501871297999-798194b0823b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
-  min-height: 500px; 
+  min-height: 500px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -322,7 +335,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 
 .parallax-post-edit {
   background-image: url("https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1506&q=80");
-  min-height: 500px; 
+  min-height: 500px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -331,7 +344,7 @@ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 
 .parallax-trips-edit {
   background-image: url("https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1506&q=80");
-  min-height: 500px; 
+  min-height: 500px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
