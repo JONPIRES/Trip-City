@@ -2,29 +2,27 @@
 {% block content %}
 
 <style>
-  .animation-container {
-    /* remove position: absolute */
-    top: 70%;
-    left: 90%;
-    z-index: -999;
+
+  body {
+    background-image: url(https://www.amtrakvacations.com/sites/amtrak/files/styles/hero/public/media/images/grand-canyon_670151752-web.jpg?h=f790d5ec&itok=PmHMpYK5);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh
   }
 
   .signup-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50vh;
     margin-top: 150px;
-    /* add margin-top to make room for the animation */
-    text-align: center;
-    /* center both the signup card and the animation */
   }
 
-  body {
-    background-color: #F4B4CC;
-    margin: 0;
-    padding: 0;
+  .custom-form {
+    text-align: center;
+  }
+  .form-group {
+    text-align: left;
   }
 
   .card {
@@ -65,7 +63,7 @@
 
             <form method="POST" action="{% url 'signup' %}" class="custom-form">
               {% csrf_token %}
-              <div class="form-group text-center">
+              <div class="form-group">
                 {{ form.as_p }}
                 <input type="hidden" name="next" value="{{ next }}">
               </div>
@@ -77,10 +75,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="animation-container">
-    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_dwGMPRJ7zu.json" background="transparent"
-      speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
   </div>
 </div>
 
