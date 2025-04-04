@@ -18,6 +18,11 @@ from dotenv import load_dotenv
 #load environment variables from .env file instead of local variables
 load_dotenv()
 
+# print("AWS_ACCESS_KEY_ID:", os.getenv("AWS_ACCESS_KEY_ID"))
+# print("AWS_SECRET_ACCESS_KEY:", os.getenv("AWS_SECRET_ACCESS_KEY"))
+# print("AWS_REGION:", os.getenv("AWS_REGION"))
+# print("S3_BUCKET:", os.getenv("S3_BUCKET"))
+# print("S3_BASE_URL:", os.getenv("S3_BASE_URL"))
 # environ.Env()
 # environ.Env.read_env()
 

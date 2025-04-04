@@ -124,24 +124,50 @@ class PostDelete(LoginRequiredMixin,DeleteView):
 
 # Posts Photos \/\/
 
+# For debugging purposes\/\/
+# credentials = boto3.Session().get_credentials()
+# print("printing creds ")
+# print("AWS Access Key:", credentials.access_key)
+# print("AWS Secret Key:", credentials.secret_key)
+
 @login_required
-def add_photo(req,post_id):
-  photo_file = req.FILES.get('photo-file', None)
-  if photo_file:
-    s3 = boto3.client('s3')
-    #uuid generates a hex of 32 charactrers but we drop that to 6 characters with the [:6]  / the rfind wants to find the '.' in the name and the basically get the '. and the rest whick would be the file type (.jpg)
-    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-    try:
-      bucket = os.getenv('S3_BUCKET')
-      s3.upload_fileobj(photo_file, bucket, key)
-      url = f"{os.getenv('S3_BASE_URL')}{bucket}/{key}"
-      comment = req.POST.get('comment', '')
-      title = req.POST.get('title', '')
-      Photo.objects.create(url=url, post_id=post_id, comment=comment, title=title)
-    except Exception as e:
-      print('an error occured uploading file to s3')
-      print(e)
-  return redirect('post_detail', post_id=post_id)
+def add_photo(req, post_id):
+    photo_file = req.FILES.get('photo-file', None)
+    
+    if photo_file:
+        # Initialize the S3 client
+        s3 = boto3.client('s3')
+        # Generate a unique key for the file using uuid (6 characters) this: photo_file.name[photo_file.name.rfind('.'):] is getting the "." and the extention
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        
+        try:
+            # Get the bucket name and base URL from environment variables
+            bucket = os.getenv('S3_BUCKET')
+            file_extension = photo_file.name.split('.')[-1].lower()
+            if file_extension == 'jpeg' or file_extension == 'jpg':
+                content_type = 'image/jpeg'
+            elif file_extension == 'png':
+                content_type = 'image/png'
+            elif file_extension == 'gif':
+                content_type = 'image/gif'
+            else:
+                content_type = 'application/octet-stream'
+            s3.upload_fileobj(photo_file, bucket, key, ExtraArgs={'ContentType': content_type})
+            
+            # Construct the image URL using the base URL
+            url = f"{os.getenv('S3_BASE_URL')}/{key}"
+            # Get the additional fields (comment, title) from the form
+            comment = req.POST.get('comment', '')
+            title = req.POST.get('title', '')
+            
+            # Save the image details to the database
+            Photo.objects.create(url=url, post_id=post_id, comment=comment, title=title)
+        except Exception as e:
+            # Handle any errors during upload
+            print('An error occurred uploading file to S3')
+            print(e)
+    
+    return redirect('post_detail', post_id=post_id)
 
 class PostActUpdate(LoginRequiredMixin,UpdateView):
     model=Photo
