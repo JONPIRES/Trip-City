@@ -19,7 +19,10 @@ def home(request):
   return render(request, 'home.html')
 
 def world(request):
-  act = Photo.objects.all
+  act = Photo.objects.all()
+  for photo in act:
+        print("photos obj: ",photo.url)
+  
   return render(request, 'world.html', {'act':act})
 
 def search(request):
