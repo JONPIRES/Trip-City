@@ -1,7 +1,8 @@
 asgiref==3.8.1
 beautifulsoup4==4.13.3
-boto3==1.37.26
-botocore==1.37.26
+boto3==1.37.28
+botocore==1.37.28
+dj-database-url==2.3.0
 Django==5.2
 django-bootstrap4==25.1
 jmespath==1.0.1

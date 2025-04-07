@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 # import environ
 import os
+import dj_database_url
 from dotenv import load_dotenv
 
 #load environment variables from .env file instead of local variables
@@ -39,7 +40,7 @@ SECRET_KEY = 'django-insecure-7dxs6l82w98%4&2qv=2x6$_g2o+tg0wf5_(!x+p_%6h#9=!hi!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['onrender.com']
 
 
 # Application definition
@@ -95,6 +96,8 @@ DATABASES = {
         'NAME': 'tripplanner',
     }
 }
+DATABASES['default'] = dj_database_url.parse("postgresql://tripplanner_36er_user:KXvcqi9rpZDvoIRymMqWQmnksXwXK8iA@dpg-cvq3iere5dus73f0ngrg-a.oregon-postgres.render.com/tripplanner_36er")
+
 
 
 # Password validation
