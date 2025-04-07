@@ -5,23 +5,53 @@
     object-fit: cover;
   }
 </style>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="card-columns">
-        {% for act in act %}
-        <a href="{% url 'post_detail' act.post.id %}">
-          <div class="card">
-            <img class="card-img-top" src="{{ act.url }}" alt="" />
-            <div class="card-body">
-              <h5 class="card-title">{{ act.title }}</h5>
-              <p class="card-text">{{ act.comment }}</p>
-            </div>
-          </div>
-        </a>
-        {% endfor %}
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+  <!-- <div class="row"> -->
+  <!-- <div class="col-md-8 offset-md-2"> -->
+  <!-- <div class="card-columns"> -->
+  {% for act in act %}
+  <a href="{% url 'post_detail' act.post.id %}">
+    <div
+      style="
+        width: fit-content;
+        height: auto;
+        background-color: var(--sunset-orange);
+        padding: 10px;
+        border-radius: 15px;
+      ">
+      <span
+        style="
+          text-align: center;
+          width: 100%;
+          font-size: large;
+          display: block;
+        ">
+        {{act.title}} </span
+      ><br />
+      <img
+        src="{{act.url}}"
+        alt=""
+        style="
+          width: 300px;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 15px;
+        " /><br />
+      <div class="comments" style="margin-top: 10px">
+        <span style="width: 100%; display: block; text-align: center"
+          >Comments</span
+        >
+        {% if act.comment %}
+        <p style="color: var(--trip-blue)">{{act.comment}}</p>
+        {% else %}
+        <p style="color: var(--trip-blue)">No Comments yet...</p>
+        {% endif %}
       </div>
     </div>
-  </div>
+  </a>
+  {% endfor %}
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- </div> -->
 </div>
 {% endblock %}
