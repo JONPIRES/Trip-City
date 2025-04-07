@@ -2,70 +2,84 @@
 {% block content %}
 
 
-<h1 class="display-1">{{ post.description }}</h1>
-<div class="container parallax-post-edit"></div>
+<div style="display: flex; justify-content: center;">
+  <h1 class="display-1">{{ post.description }}</h1>
+  <div class="card-action ">
+    <button style="margin: 10px;" type="submit" class="btn text-center mx-auto"><a href="{% url 'post_update' post.id %}">Edit Post</a>
+    <form action="{% url 'post_delete' post.id %}" method="POST"></button>
+      {% csrf_token %}
+      <button type="submit" class="btn text-center mx-auto" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
+    </form>
+  </div>
+</div>
+<!-- paralax effect is commented out in styles.css. maybe add main image property under post to be used in the paralax background image -->
+<div style="background-image:url('https://images.unsplash.com/photo-1575408264798-b50b252663e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1506&q=80')" class="container parallax-post-edit"></div>
 
+<div class="w-100">
+  <h4>How was it?</h4>
+  <p class="block w-fit text-trip-blue">{{ post.comment }}</p> 
+  <!-- <p class="block w-fit">{{ post.date }}</p><br> -->
+</div>
 
 {% if user == post.user.id %}
 <div class="col-lg-8">
   <!-- Form for the activities -->
-<div class="w-100 p-3" id="show" style="cursor:pointer; font-size: 22px;">&#10753;Add Activity</div>
-  <div class="col-lg-4 post-form" style="display: none;" >
-    <div class="car">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-center rounded" id="new-act-form">
+<div class="w-100 p-3 toggle-button" id="show" style="cursor:pointer; font-size: 22px;">&#10753; Add Activity</div>
+  <!-- <div class="col-lg-4 post-form w-100"  > -->
+    <!-- <div class="car"> -->
+      <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-center rounded" > -->
         <form 
+        style="display: none; width: 100%; justify-content: center; flex-direction: column; align-items: center; background-color: azure; padding: 10px;"
         action="{% url 'add_photo' post.id %}" 
         enctype="multipart/form-data" 
-        method="POST" class="card-panel mx-auto">
+        method="POST" class=" mx-auto post-form">
         {% csrf_token %}
-        <input type="file" name="photo-file"><br>
-        <h6>Title</h6>
-        <input type="txt" name="title"><br>
-        <h6>Comment</h6>
-        <textarea name="comment" id="comment" rows="10" cols="15"></textarea><br>
-        <button type="submit" class="btn text-white justify-content-end">SHARE</button>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <label style="color: var(--indigo);" for="file">Pick an image for your activity</label>
+          <input type="file" name="photo-file"><br>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <label style="color: var(--indigo);">Activity Title</label>
+          <input type="txt" name="title"><br>
+        </div>
+        <div  style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <label style="color: var(--indigo);">Notes</label>
+          <textarea name="comment" id="comment" rows="10" cols="55"></textarea><br>
+        </div>
+        <button type="submit" class="btn text-black justify-content-end">SHARE</button>
         </form>
-      </div>
-    </div>
-  </div>
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
 </div>
 {% endif %}
 <!-- <div class="row">
   <div class="col s12"> -->
-    <div class="row">
-      <div class="col s4">
-        <div class="card my-trip-notes" id="trips-cards" style="height: 14rem; width: 24rem;">
-            <div class="card-content align-center">
-              <h5 id="card-title">{{ post.comment }}</h5> 
-              <p>{{ post.date }}</p><br>
-              <p> {{post.comment}} </p>
-            </div>
-         </div>
-      </div>
-    </div>
-    <div class="card-action ">
-      <button style="margin: 10px;" type="submit" class="btn text-center mx-auto"><a href="{% url 'post_update' post.id %}">Edit Post</a>
-      <form action="{% url 'post_delete' post.id %}" method="POST"></button>
-        {% csrf_token %}
-        <button type="submit" class="btn rounded" style="font-family:Bebas Neue; font-size: 12px">Delete Post</button>
-      </form>
-    </div>
+ 
+    
          <!-- \/\/\/  Below is the function for the photos  \/\/\/ -->
     
-         <div class="row">
+         <div style="display: flex; flex-wrap: wrap; gap: 10px; ">
              {% for act in post.photo_set.all %}
-                <div class="card primary">
+                <div  style="width: fit-content; height: auto; background-color:var(--sunset-orange); padding: 10px; border-radius: 15px;">
                     <div class="card-content ">
-                      <img src="{{act.url}}" alt="" class=""><br>
-                      <p> {{act.title}} </p><br>
-                      <p> {{act.comment}} </p>
+                      <span style="text-align: center; width: 100%; font-size: large; display: block;"> {{act.title}} </span><br>
+                      <img src="{{act.url}}" alt="" style="width: 300px;height: 300px; object-fit: cover; border-radius: 15px;"><br>
+                      <div class="comments" style="margin-top:10px">
+                        <span style="width: 100%; display: block; text-align: center;" >Comments</span>
+                        {% if act.comment %}
+                        <p style="color: var(--trip-blue);"> {{act.comment}} </p>
+                        {% else %}
+                        <p style="color: var(--trip-blue);"> No Comments yet... </p>
+                        {% endif %}
+                      </div>
                     </div>
                     {% if user == post.user.id %}
-                    <div class="card-action">
-                      <button style="margin: 10px;" type="submit" class="btn blue darken-4 center"><a href="{% url 'post_act_update' act.id %}">Edit Post</a>
+                    <div style="display: flex; justify-content: space-between;">
+                      <button style=" background-color: var(--indigo);" type="submit" class="btn blue darken-4 center"><a href="{% url 'post_act_update' act.id %}">Edit Post</a>
                       <form action="{% url 'post_act_delete' act.id %}" method="POST"></button>
                         {% csrf_token %}
-                        <button type="submit" class="btn red center" >Delete Post</button>
+                        <button type="submit" style="background-color:var(--text-red);" class="btn red center back-red" >Delete Post</button>
                       </form>
                     </div>
                     {% endif %}
@@ -81,11 +95,30 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  $(document).ready(function(){
-      $('#show').click(function() {
-        $('.post-form').slideDown("slow");
-      });
+  
+  $('.toggle-button').on('click', function () {
+  $('.post-form').slideToggle("slow", function() {
+    if ($(this).is(':visible')) {
+      $(this).css('display', 'flex');  // Set display to flex when visible
+    }
   });
+});
+
+// $('.toggle-button').on('click', function () {
+//   var $form = $('.post-form');
+//   if ($form.is(':visible')) {
+//     $form.removeClass('open');  // Collapse the form
+//   } else {
+//     $form.addClass('open');  // Expand the form
+//   }
+// })
+
+  // $(document).ready(function(){
+  //     $('#show').click(function() {
+
+  //       $('.post-form').slideDown("slow");
+  //     });
+  // });
   </script>
 
   {% endblock %}
