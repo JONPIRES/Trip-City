@@ -1,0 +1,49 @@
+:root {
+  --indigo: #6610f2;
+  --light-gray: #d0d0d0;
+  --trip-blue: #5089c6;
+  --sunset-orange: #ffbda5;
+  --text-dark: #030307;
+  --text-red: #ff5c5c;
+}
+
+/* Text Color */
+
+.text-indigo {
+  color: var(--indigo);
+}
+.text-light-gray {
+  color: var(--light-gray);
+}
+.text-trip-blue {
+  color: var(--trip-blue);
+}
+.text-sunset-orange {
+  color: var(--sunset-orange);
+}
+.text-dark {
+  color: var(--text-dark);
+}
+.text-red {
+  color: var(--text-dark);
+}
+
+/* Background */
+.back-indigo {
+  background-color: var(--indigo);
+}
+.back-light-gray {
+  color: var(--light-gray);
+}
+.back-trip-blue {
+  background-color: var(--trip-blue);
+}
+.back-sunset-orange {
+  background-color: var(--sunset-orange);
+}
+.back-dark {
+  background-color: var(--text-dark);
+}
+.back-red {
+  background-color: var(--text-red);
+}
